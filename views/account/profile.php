@@ -4,7 +4,7 @@ $result=getProfileDetail();
 $item=mysqli_fetch_array($result);
 if(isset($_POST['update'])){
 updateProfile();
-echo "<script>location='?account=profile'</script>";
+echo "<script>location='?option=profile'</script>";
 }
 ?> 
 <div class="wrapper bgded" style="background-image:url('../images/demo/backgrounds/03.png');">
@@ -20,7 +20,7 @@ echo "<script>location='?account=profile'</script>";
         <button type="submit" value="update" name="update">Update profile</button>
         </fieldset>
       </form>
-      <p><a href="?account=changePassword">Change password?</a></p>
+      <p><a href="?option=changePassword">Change password?</a></p>
     </div>
   </section>
 </div>

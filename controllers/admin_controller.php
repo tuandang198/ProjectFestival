@@ -96,7 +96,7 @@ if (isset($_GET['request'])) {
                     $alert = "Book has already existed.";
                 } else {
                     if (addBook() == 1) {
-                        echo "<script>location='?request=book'</script>";
+                        // echo "<script>location='?request=book'</script>";
                     } else {
                         $alert = "Unidentified image.";
                     }
@@ -111,7 +111,7 @@ if (isset($_GET['request'])) {
                     $alert = "Duplicated book";
                 } else {
                     if (updateBook() == 1) {
-                        echo "<script>location='?request=book'</script>";
+                        // echo "<script>location='?request=book'</script>";
                     } else {
                         $alert = "Unidentified image.";
                     }
@@ -151,5 +151,13 @@ if (isset($_GET['request'])) {
             }
             include "../views/admin/companyInfo/companyInfo.php";
             break;
+        case 'feedback': 
+            $feedback=showFeedback();
+            include "../views/admin/user/feedback.php";
+            break;
+            case 'deleteFeedback':
+                deleteFeedback();
+                echo "<script>location='?request=feedback'</script>";
+                break;
     }
 }

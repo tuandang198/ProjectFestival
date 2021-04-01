@@ -3,6 +3,11 @@ function showBooks()
 {
     global $connect;
     $query = "select * from books where status=1";
+    if(isset($_GET['religionID'])){
+        $query.=" and religion=".$_GET['religionID'];
+    }elseif(isset($_POST['search'])){
+        $query.=" and name='%" . $_POST['search_name'] . "%'";
+      } 
     $result = $connect->query($query);
     return $result;
 }
@@ -51,6 +56,7 @@ function showAllBook()
     $result = $connect->query($query);
     return $result;
 }
+
 function checkBook()
 {
     global $connect;

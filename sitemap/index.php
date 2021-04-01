@@ -28,6 +28,9 @@
             <tr>
             <td><a href="../sitemap/sitemap-religionFes.php">sitemap-religionFes</a></td>
             </tr>
+            <tr>
+            <td><a href="../sitemap/sitemap-religionBook.php">sitemap-religionBook</a></td>
+            </tr>
     </tbody>
     </thead>
 </table>

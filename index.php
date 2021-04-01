@@ -10,26 +10,14 @@ mysqli_set_charset($connect, 'utf8');
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+
 </head>
 <body id="top">
-<?php if(isset($_GET['request']) || isset($_GET['order']) || isset($_GET['festival'])):?>
-<?php include "layout/headerFes.php"?>
-<?php else:?>
 <?php include "layout/header.php"?>
-<?php endif;?>
-<div class="clear">
-<?php if(isset($_GET['option'])):?>
+<div>
+<div class="clear" style="padding: 0 0 0px 0;" > 
 <?php include "controllers/controller.php" ?>
-<?php elseif(isset($_GET['festival'])):?>
-<?php include "controllers/fes_controller.php" ?>
-<?php elseif(isset($_GET['account'])):?>
-<?php include "controllers/account_controller.php" ?>
-<?php elseif(isset($_GET['order'])):?>
-<?php include "controllers/order_controller.php"?>
-<?php else:?>
-<?php $query = "SELECT * FROM `festival` WHERE `status`=1 ORDER BY RAND ( ) LIMIT 2";
-    $result = $connect->query($query); include "layout/home.php";?>   
-<?php endif;?>
+
 </div>
 <?php include "layout/footer.php" ?>
 <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
@@ -37,6 +25,13 @@ mysqli_set_charset($connect, 'utf8');
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
-
+<script type="text/javascript">
+               $(document).ready(function() { /// Wait till page is loaded
+   $('.addToCart').click(function(){
+      $(' #cart-drawer').load('?option=books #cart-drawer', function() {
+      });
+   });
+}); 
+</script>
 </body>
 </html>

@@ -16,9 +16,9 @@
             <tr>
                 <td><?= $item['order_id'] ?></td>
                 <td><?= $item['name'] ?></td>
-                <td><?= $item['address'] ?></td>
+                <td><?= $item['order_address'] ?></td>
                 <td><?= $item['email'] ?></td>
-                <td><?= $item['phone'] ?></td>
+                <td><?= $item['order_phone'] ?></td>
                 <td><?= $item['created_at'] ?></td>
                 <td><?= $item['status'] == 1 ? 'Active' : 'Not active' ?></td>
                 <td>

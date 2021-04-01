@@ -19,14 +19,14 @@ if(isset($_POST['username'])){
       <p class="btmspace-30"><?php if(isset($alert)){echo $alert;} ?></p>
       <form method="post" action="#">
         <fieldset>
-          <input type="text" value="" placeholder="Username" name="username">
+          <input type="text" value="" placeholder="Username" name="username" required>
           <input type="password" value="" placeholder="Password" name="password">
           <button type="submit" value="submit">Submit</button>
         </fieldset>
       </form>
     </div>
     <div>
-    <a href="?account=searchUser">Forgot your password?</a>
+    <a href="?option=searchUser">Forgot your password?</a>
     </div>
   </section>
 </div>

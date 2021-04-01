@@ -21,11 +21,11 @@ $result = mysqli_query($connect, $sql);
 while($row = mysqli_fetch_array($result)) {
   ?>
 
-        <figure>
+        <figure style="text-align: center;">
           <header class="heading">Book Gallery</header>
           <ul class="nospace clear">
           <?php foreach($result as $item):?>
-            <a href="?order=bookDetail&ID=<?= $item['book_id'] ?>">
+            <a href="?option=bookDetail&ID=<?= $item['book_id'] ?>">
             <img src="images/books/<?= $item['img'] ?>" alt="">
         </a>
         

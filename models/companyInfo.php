@@ -71,7 +71,8 @@ function insertFeedback(){
     $name=mysqli_real_escape_string($connect,$_POST['name']);
     $email=mysqli_real_escape_string($connect,$_POST['email']);
     $comment=mysqli_real_escape_string($connect,$_POST['comment']);
-    $query = "INSERT INTO `feedback`(`name`, `email`, `comment`) VALUES ('$name','$email','$comment')";
+    $created_at=getDatetimeNow();
+    $query = "INSERT INTO `feedback`(`name`, `email`, `comment`, `created_at`) VALUES ('$name','$email','$comment','$created_at')";
     $connect->query($query);
 }
 function updateinfo(){
@@ -81,7 +82,22 @@ function updateinfo(){
     $address=mysqli_real_escape_string($connect,$_POST['address']);
     $phone=mysqli_real_escape_string($connect,$_POST['phone']);
     $workhour=mysqli_real_escape_string($connect,$_POST['workhour']);
-    $query ="UPDATE `company_form` SET `aboutus`='$aboutus',`address`='$address',`email`='$email',`phonenumber`='$phone' ,`workinghour`='$workhour' WHERE `id`=1"; 
+    $latitude=mysqli_real_escape_string($connect,$_POST['latitude']);
+    $longtitude=mysqli_real_escape_string($connect,$_POST['longtitude']);
+    $api=mysqli_real_escape_string($connect,$_POST['api']);
+
+    $query ="UPDATE `company_form` SET `aboutus`='$aboutus',`address`='$address',`email`='$email',`phonenumber`='$phone' ,`workinghour`='$workhour',`googlemapsAPI`='$api',`latitude`='$latitude',`longtitude`='$longtitude' WHERE `id`=1"; 
+    $connect->query($query);
+}
+function showFeedback(){
+    global $connect;
+    $query = "SELECT * FROM `feedback`";
+    $result=$connect->query($query);
+    return $result;
+}
+function deleteFeedback(){
+    global $connect;
+    $query="delete from feedback where id=".$_GET['id'];
     $connect->query($query);
 }
 ?>

@@ -28,7 +28,7 @@ include "../models/festival.php";
     <tbody>
         <?php foreach($religion as $item):?>
             <tr>
-            <td><a href="../?festival=show&religionID=<?=$item['id']?>"><?=$item['religion_name']?></a></td>
+            <td><a href="../?option=showFes&religionID=<?=$item['id']?>"><?=$item['religion_name']?></a></td>
             </tr>
         <?php endforeach;?>
     </tbody>

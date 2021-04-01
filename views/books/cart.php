@@ -15,7 +15,7 @@
     }
 ?> 
 <h1>View cart</h1>
-<a href="?order=books">Go back to books page</a>
+<a href="?option=books">Go back to books page</a>
 <form action="" method="post">
 <div class="scrollable" style="color: black;">
 <table>
@@ -43,7 +43,7 @@
                         ?> 
                         <tr > 
                             <td><p><?php echo $row['name'] ?></p></td> 
-                            <td><input type="number" name="quantity[<?php echo $row['book_id'] ?>]" size="5" value="<?php echo $_SESSION['cart'][$row['book_id']]['quantity'] ?>" /></td> 
+                            <td><input min="0" type="number" name="quantity[<?php echo $row['book_id'] ?>]" size="5" value="<?php echo $_SESSION['cart'][$row['book_id']]['quantity'] ?>" required /></td> 
                             <td><?php echo $row['price'] ?>$</td> 
                             <td><?php echo $_SESSION['cart'][$row['book_id']]['quantity']*$row['price'] ?>$</td> 
                         </tr> 
@@ -57,7 +57,7 @@
     </table> 
     <br /> 
     <button type="submit" name="submit">Update Cart</button> 
-    <button onclick=""><a href="?order=orderDetail">Order</a></button>
+    <button onclick=""><a href="?option=orderDetail">Order</a></button>
     </div>
 </form> 
 <br /> 

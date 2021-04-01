@@ -7,7 +7,7 @@ if (isset($_POST['emailPhone'])) {
         $alert = "Your email or phone number that you entered is invalid.";
     } else {
         $_SESSION['forgotAccount'] = $emailPhone;
-        echo "<script>location='?account=sendEmail'</script>";
+        echo "<script>location='?option=sendEmail'</script>";
     }
 }
 ?>

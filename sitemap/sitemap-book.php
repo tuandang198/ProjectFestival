@@ -29,7 +29,7 @@ include "../models/books.php";
     <tbody>
         <?php foreach($book as $item):?>
             <tr>
-            <td><a href="../?order=bookDetail&ID=<?=$item['book_id']?>"><?=$item['name']?></a></td>
+            <td><a href="../?option=bookDetail&ID=<?=$item['book_id']?>"><?=$item['name']?></a></td>
 			<td><?=$item['created']?></td>
             </tr>
         <?php endforeach;?>

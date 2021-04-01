@@ -1,38 +1,35 @@
-<div>
-    <p><?= $result['title'] ?></p>
-    <p>By <?= $result['author'] ?></p><!-- Tac gia-->
-    <p>Created at:<?= $result['created_at'] ?></p><!-- Ngay tao-->
-    <h6 class="heading">Religion: <?= $result['religion_name'] ?></h6><!-- Ton giao-->
+<div class="wrapper row3" style="background-color: #dcccb0;">
+<main class="hoc container clear">
+<div class="content three_quarter first">
+    <h6 class="heading" style="font-weight: bold;"><?= $result['title'] ?></h6>
+    <p>Religion: <?= $result['religion_name'] ?></p><!-- Ton giao-->
+    <div style="font-weight: bold;"><?=$result['description']?></div> 
     <div><?= $result['article'] ?></div><!-- Noi dung-->
+    <p>By <?= $result['author'] ?> Created at:<?= $result['created_at'] ?></p><!-- Tac gia-->
     <div>
         <?php if (isset($_SESSION['customerAccount'])) : ?>
-            <button class="btn btn-warning my-3" ><a style="color: white;"href="downloadPDF.php?id=<?= $result['fes_id'] ?>">Download PDF</a></button>
+            <button class="btn btn-warning my-3" ><a style="color: black;"href="downloadPDF.php?id=<?= $result['fes_id'] ?>">Download PDF</a></button>
         <?php else : ?>
-            <button class="btn btn-warning my-3" ><a style="color: white;" href="?account=signin">Download PDF</a></button>
+            <button class="btn btn-warning my-3" ><a style="color: black;" href="?option=signin">Download PDF</a></button>
         <?php endif; ?>
-    </div> s
+    </div>
 </div>
  
+<div class="sidebar one_quarter"> 
 <h6>Recommended Books</h6>
 <div>
     <?php foreach ($book as $item) : ?>
-        <div style="width: 50%;">
-            <div class="one_quarter">
-                <a href="?order=bookDetail&ID=<?= $item['book_id'] ?>">
-                    <img src="images/books/<?= $item['img'] ?>" alt="">
-                </a>
-                <p><?= $item['name'] ?></p>
-                <p><?= $item['price'] ?>$</p>
-                <?php if (isset($_SESSION['customerAccount'])) : ?>
-                    <div>
-                        <button class="btn btn-warning my-3"><a href="?order=bookDetail&ID=<?= $item['book_id'] ?>">Add to cart </a><i class="fas fa-shopping-cart"></i></button>
-                    </div>
-                <?php else : ?>
-                    <div>
-                        <button class="btn btn-warning my-3"><a href="index.php?account=signin" style="color: white;">Add to cart </a><i class="fas fa-shopping-cart"></i></button>
-                    </div>
-                <?php endif; ?>
+        <div class="one_quarter" style="width: 50%;">
+            <a href="?option=bookDetail&ID=<?= $item['book_id'] ?>">
+                <img class="imgr borderedbox inspace-5" src="images/books/<?= $item['img'] ?>" alt="">
+            </a>
+            <p><?= $item['name'] ?></p>
+            <p><?= $item['price'] ?>$</p>
             </div>
-        </div>
     <?php endforeach; ?>
+</nav>
+</div>
+</div>
+
+</main>
 </div>

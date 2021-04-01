@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 20, 2021 at 08:44 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.1
+-- Máy chủ: localhost
+-- Thời gian đã tạo: Th3 29, 2021 lúc 01:06 PM
+-- Phiên bản máy phục vụ: 10.4.17-MariaDB
+-- Phiên bản PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,21 +18,40 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_festival`
+-- Cơ sở dữ liệu: `db_festival`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `books`
+-- Cấu trúc bảng cho bảng `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(60) NOT NULL,
+  `password` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(2, 'doge', '202cb962ac59075b964b07152d234b70');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `books`
 --
 
 CREATE TABLE `books` (
   `book_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `author` varchar(40) NOT NULL,
-  `img` varchar(50) NOT NULL,
-  `religion` varchar(50) NOT NULL,
+  `img` text NOT NULL,
+  `religion` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   `description` text NOT NULL,
@@ -40,73 +59,170 @@ CREATE TABLE `books` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `books`
+-- Đang đổ dữ liệu cho bảng `books`
 --
 
 INSERT INTO `books` (`book_id`, `name`, `author`, `img`, `religion`, `price`, `status`, `description`, `created`) VALUES
-(1, 'Let\'s know festival of India', 'abc', 'lets_know_festivals_of_india_idg829.jpg', '', '17.00', 1, 'From the Hindu collection in our Books category, this is Let\'s know Festivals of India.', '0000-00-00 00:00:00'),
-(2, 'Christian Festivals (Celebrate) Library Binding', 'xyz', 'chistian_Festval_Thompson.jpg', '', '17.88', 1, '', '0000-00-00 00:00:00'),
-(3, 'The Jewish Festivals', '', '9780805209372.jpg', '', '18.00', 1, 'Why is the Jewish New Year designated on the Jewish calendar as the first day of the seventh month, and not of the first month? Why do women cover their eyes when reciting the blessing over the Sabbath candles? How did the Seder originate? Does the Book of Esther, read on Purim, mirror any real historical events?\r\n\r\nLong considered a classic, The Jewish Festivals provides a rich and charming account of the origins, development, and symbolism of the Jewish holidays, and of the diverse rituals, prayers, ceremonial objects, and special foods that have been used throughout history and around the world to celebrate them. Drawing upon a wealth of knowledge of Jewish folkways and customs, Hayyim Schauss shows how these holidays evolved in meaning and importance, depending on the contemporary needs of those who observed them. Written with passion and warmth, this book will infuse your own experience of the holidays with extra meaning and delight.\r\n\r\n', '0000-00-00 00:00:00');
+(1, 'Let\'s know festival of India', 'abc', '1615387841_lets_know_festivals_of_india_idg829.jpg', 1, '21.00', 1, '<p>From the Hindu collection in our Books category, this is Let&#39;s know Festivals of India.</p>\r\n', '0000-00-00 00:00:00'),
+(2, 'Christian Festivals (Celebrate) Library Binding', 'xyz', '1615387852_chistian_Festval_Thompson.jpg', 2, '17.88', 1, '', '0000-00-00 00:00:00'),
+(3, 'The Jewish Festivals', 'Đặng Minh Tuấn', '1615387861_9780805209372.jpg', 3, '18.00', 1, '<p>Why is the Jewish New Year designated on the Jewish calendar as the first day of the seventh month, and not of the first month? Why do women cover their eyes when reciting the blessing over the Sabbath candles? How did the Seder originate? Does the Book of Esther, read on Purim, mirror any real historical events? Long considered a classic, The Jewish Festivals provides a rich and charming account of the origins, development, and symbolism of the Jewish holidays, and of the diverse rituals, prayers, ceremonial objects, and special foods that have been used throughout history and around the world to celebrate them. Drawing upon a wealth of knowledge of Jewish folkways and customs, Hayyim Schauss shows how these holidays evolved in meaning and importance, depending on the contemporary needs of those who observed them. Written with passion and warmth, this book will infuse your own experience of the holidays with extra meaning and delight.</p>\r\n\r\n<p><img alt=\"\" src=\"https://images.pexels.com/photos/247600/pexels-photo-247600.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940\" style=\"height:1186px; width:1880px\" /></p>\r\n', '0000-00-00 00:00:00'),
+(8, 'Phật Giáod', 'Đặng Minh Tuấn', '1615373409_9781419739033_p0_v5_s550x406.jpg', 1, '9.00', 1, '<p>bhjnk<img alt=\"\" src=\"https://images.pexels.com/photos/247600/pexels-photo-247600.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940\" style=\"height:1186px; width:1880px\" /></p>\r\n', '2021-03-05 04:25:44');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `festival`
+-- Cấu trúc bảng cho bảng `company_form`
+--
+
+CREATE TABLE `company_form` (
+  `id` int(11) NOT NULL,
+  `aboutus` text NOT NULL,
+  `address` text NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `googlemapsAPI` text NOT NULL,
+  `latitude` varchar(150) NOT NULL,
+  `longtitude` varchar(150) NOT NULL,
+  `phonenumber` varchar(20) NOT NULL,
+  `workinghour` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `company_form`
+--
+
+INSERT INTO `company_form` (`id`, `aboutus`, `address`, `email`, `googlemapsAPI`, `latitude`, `longtitude`, `phonenumber`, `workinghour`) VALUES
+(1, '<p>Với kinh nghiệm 34 năm trong lĩnh vực đ&agrave;o tạo C&ocirc;ng Nghệ Th&ocirc;ng Tin (CNTT), Aptech ch&uacute;ng t&ocirc;i tự h&agrave;o l&agrave; một c&ocirc;ng ty đ&agrave;o tạo nghề nghiệp h&agrave;ng đầu thế giới c&oacute; trụ sở tại Mumbai, Ấn Độ. C&oacute; mặt tr&ecirc;n hơn 40 quốc gia với hơn 1.350 cơ sở, Aptech đ&atilde; đ&agrave;o tạo cho hơn 6,8 triệu học vi&ecirc;n tr&ecirc;n to&agrave;n thế giới v&agrave; hơn 100.000 lập tr&igrave;nh vi&ecirc;n tại Việt Nam. &quot;Ch&uacute;ng t&ocirc;i kh&ocirc;ng chạy theo c&ocirc;ng nghệ. Aptech lu&ocirc;n đ&oacute;n đầu c&ocirc;ng nghệ&quot;&#39;123456</p>\r\n', '54 - 56 Lê Thanh Nghị, Bách Khoa, Q. Hai Bà Trưng, Hà Nội', 'bacteridsa@abc.com', 'AIzaSyDNI_ZWPqvdS6r6gPVO50I4TlYkfkZdXh8', '10.823099', '106.629662', '213123123112390', '9.00 - 17.00');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `comment` text NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `name`, `email`, `comment`, `created_at`) VALUES
+(1, 'TUAN DANG MINH', 'tuandang10998@gmail.com', 'asdad', '0000-00-00 00:00:00'),
+(2, 'TUAN DANG MINH', 'tuandang10998@gmail.com', 'bhjnknjknkjn', '2021-03-19 04:12:38'),
+(3, 'Let\'s know festival of Indian', 'tuandang10998@gmail.com', '', '2021-03-28 09:30:10'),
+(4, 'TUAN DANG MINH', 'tuandang10998@gmail.com', 'momk', '2021-03-29 09:16:54');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `festival`
 --
 
 CREATE TABLE `festival` (
   `fes_id` int(11) NOT NULL,
-  `title` varchar(70) NOT NULL,
+  `title` text NOT NULL,
   `religion_id` int(11) NOT NULL DEFAULT 1,
   `article` text NOT NULL,
+  `title_image` text NOT NULL,
   `description` text NOT NULL,
-  `top_image` varchar(60) NOT NULL,
-  `bot_image` varchar(50) NOT NULL,
   `author` varchar(60) NOT NULL,
   `created_at` datetime NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `festival`
+-- Đang đổ dữ liệu cho bảng `festival`
 --
 
-INSERT INTO `festival` (`fes_id`, `title`, `religion_id`, `article`, `description`, `top_image`, `bot_image`, `author`, `created_at`, `status`) VALUES
-(1, 'Lễ hội Halloween là ngày nào, nguồn gốc, ý nghĩa của Halloween?', 1, 'Lễ hội Halloween hay lễ hội hóa trang diễn ra vào ngày 31/10 hàng năm. Đối với nhiều nước trên thế giới, Halloween rất được ưa chuộng với nhiều ý nghĩa về giáo dục, nhân văn phía sau những hình ảnh hóa trang ma quỷ. Xu hướng ngày lễ Halloween đến với Việt Nam cũng từ lâu và được giới trẻ rất ưa thích. Cùng khám phá tất tần tật trong bài viết này nhé!\r\n\r\nTại sao Halloween diễn ra vào ngày 31/10?\r\nLễ hội Halloween bắt nguồn từ ngày lễ “The Celtic Festival of Samhain” của dân tộc Celts sống cách đây khoảng 2.000 năm ở phần đất nay thuộc lãnh thổ nước Anh và phía Bắc nước Pháp.\r\n\r\nVào đêm ngày 31/10, buổi lễ “The Celtic Festival of Samhain” được người Celts tổ chức để tưởng nhớ và vinh danh Thánh Samhain, vị chúa tể cai quản những linh hồn người chết. Họ tin rằng Thánh Samhain cho phép các linh hồn được trở về dương thế thăm gia đình và ăn tết vào đêm 31/10 này.\r\n\r\nCuối tháng 10 cũng là dịp để người Celts dâng cúng lễ vật cảm ơn những gì thiên nhiên đã ban tặng cho họ, cầu xin cho một năm mới thịnh vượng và mùa màng bội thu. Vào lễ vinh danh Thánh Samhain, người Celts thường đốt những đống lửa lớn trên đồi để tỏ lòng tôn kính tới các vị thần và xua đuổi tà ma.', 'Lễ hội Halloween hay lễ hội hóa trang diễn ra vào ngày 31/10 hàng năm.', 'halloween1.jpg', 'y-nghia-ngay-le-halloween_1602727204.jpg', 'abc', '2021-02-20 10:02:25', 1),
-(2, 'Lễ  Phục Sinh', 3, 'Lễ Phục Sinh thường được xem là một trong những ngày lễ quan trọng nhất trong năm của người theo Kitô giáo. Thường diễn ra vào tháng 3 hoặc tháng 4 mỗi năm để tưởng niệm sự kiện chết và Phục sinh của Giê-su từ cõi chết sau khi bị đóng đinh trên thập tự giá. Được người Kitô hữu tin là đã xảy ra vào khoảng năm 30 đến năm 33.', 'Lễ Phục Sinh thường được xem là một trong những ngày lễ quan trọng nhất trong năm của người theo Kitô giáo. Thường diễn ra vào tháng 3 hoặc tháng 4 mỗi năm để tưởng niệm sự kiện chết và Phục sinh của Giê-su từ cõi chết sau khi bị đóng đinh trên thập tự giá. Được người Kitô hữu tin là đã xảy ra vào khoảng năm 30 đến năm 33.', '05.jpg', '', '', '2021-02-20 11:03:22', 1),
-(3, 'Lễ  Phục Sinh', 2, 'Lễ Phục Sinh thường được xem là một trong những ngày lễ quan trọng nhất trong năm của người theo Kitô giáo. Thường diễn ra vào tháng 3 hoặc tháng 4 mỗi năm để tưởng niệm sự kiện chết và Phục sinh của Giê-su từ cõi chết sau khi bị đóng đinh trên thập tự giá. Được người Kitô hữu tin là đã xảy ra vào khoảng năm 30 đến năm 33.', 'Lễ Phục Sinh thường được xem là một trong những ngày lễ quan trọng nhất trong năm của người theo Kitô giáo. Thường diễn ra vào tháng 3 hoặc tháng 4 mỗi năm để tưởng niệm sự kiện chết và Phục sinh của Giê-su từ cõi chết sau khi bị đóng đinh trên thập tự giá. Được người Kitô hữu tin là đã xảy ra vào khoảng năm 30 đến năm 33.', '05.jpg', '', '', '2021-02-20 11:03:22', 1),
-(4, 'Lễ  Phục Sinh', 3, 'Lễ Phục Sinh thường được xem là một trong những ngày lễ quan trọng nhất trong năm của người theo Kitô giáo. Thường diễn ra vào tháng 3 hoặc tháng 4 mỗi năm để tưởng niệm sự kiện chết và Phục sinh của Giê-su từ cõi chết sau khi bị đóng đinh trên thập tự giá. Được người Kitô hữu tin là đã xảy ra vào khoảng năm 30 đến năm 33.', 'Lễ Phục Sinh thường được xem là một trong những ngày lễ quan trọng nhất trong năm của người theo Kitô giáo. Thường diễn ra vào tháng 3 hoặc tháng 4 mỗi năm để tưởng niệm sự kiện chết và Phục sinh của Giê-su từ cõi chết sau khi bị đóng đinh trên thập tự giá. Được người Kitô hữu tin là đã xảy ra vào khoảng năm 30 đến năm 33.', '05.jpg', '', '', '2021-02-20 11:03:22', 1);
+INSERT INTO `festival` (`fes_id`, `title`, `religion_id`, `article`, `title_image`, `description`, `author`, `created_at`, `status`) VALUES
+(1, 'Lễ hội Halloween là ngày nào, nguồn gốc, ý nghĩa của Halloween? ', 3, '<p>Lễ hội Halloween hay lễ hội h&oacute;a trang diễn ra v&agrave;o ng&agrave;y 31/10 h&agrave;ng năm. Đối với nhiều nước tr&ecirc;n thế giới, Halloween rất được ưa chuộng với nhiều &yacute; nghĩa về gi&aacute;o dục, nh&acirc;n văn ph&iacute;a sau những h&igrave;nh ảnh h&oacute;a trang ma quỷ. Xu hướng ng&agrave;y lễ Halloween đến với Việt Nam cũng từ l&acirc;u v&agrave; được giới trẻ rất ưa th&iacute;ch. C&ugrave;ng kh&aacute;m ph&aacute; tất tần tật trong b&agrave;i viết n&agrave;y nh&eacute;! Tại sao Halloween diễn ra v&agrave;o ng&agrave;y 31/10? Lễ hội Halloween bắt nguồn từ ng&agrave;y lễ &ldquo;The Celtic Festival of Samhain&rdquo; của d&acirc;n tộc Celts sống c&aacute;ch đ&acirc;y khoảng 2.000 năm ở phần đất nay thuộc l&atilde;nh thổ nước Anh v&agrave; ph&iacute;a Bắc nước Ph&aacute;p. V&agrave;o đ&ecirc;m ng&agrave;y 31/10, buổi lễ &ldquo;The Celtic Festival of Samhain&rdquo; được người Celts tổ chức để tưởng nhớ v&agrave; vinh danh Th&aacute;nh Samhain, vị ch&uacute;a tể cai quản những linh hồn người chết. Họ tin rằng Th&aacute;nh Samhain cho ph&eacute;p c&aacute;c linh hồn được trở về dương thế thăm gia đ&igrave;nh v&agrave; ăn tết v&agrave;o đ&ecirc;m 31/10 n&agrave;y. Cuối th&aacute;ng 10 cũng l&agrave; dịp để người Celts d&acirc;ng c&uacute;ng lễ vật cảm ơn những g&igrave; thi&ecirc;n nhi&ecirc;n đ&atilde; ban tặng cho họ, cầu xin cho một năm mới thịnh vượng v&agrave; m&ugrave;a m&agrave;ng bội thu. V&agrave;o lễ vinh danh Th&aacute;nh Samhain, người Celts thường đốt những đống lửa lớn tr&ecirc;n đồi để tỏ l&ograve;ng t&ocirc;n k&iacute;nh tới c&aacute;c vị thần v&agrave; xua đuổi t&agrave; ma.&aacute;d</p>\r\n\r\n<h2 style=\"text-align:justify\"><span style=\"font-size:18px\"><strong>KH&Aacute;M PH&Aacute; NGUỒN GỐC LỄ HỘI HALLOWEEN</strong></span></h2>\r\n\r\n<p style=\"text-align:justify\">Lễ hội Halloween ng&agrave;y nay bắt nguồn từ d&acirc;n tộc Celt, l&agrave; một d&acirc;n tộc sống c&aacute;ch đ&acirc;y hơn 2,000 năm tr&ecirc;n c&aacute;c v&ugrave;ng đất b&acirc;y giờ l&agrave; Anh quốc, &Aacute;i Nhĩ Lan v&agrave; miền Bắc nước Ph&aacute;p. D&acirc;n tộc Celt bắt đầu năm mới v&agrave;o ng&agrave;y 1 th&aacute;ng 11 Dương Lịch. Một lễ hội được cử h&agrave;nh v&agrave;o đ&ecirc;m trước năm mới để vinh danh vị thủ l&atilde;nh đ&atilde; qu&aacute; cố l&agrave; Samhain. Ng&agrave;y lễ hội n&agrave;y b&aacute;o hiệu sự bắt đầu của m&ugrave;a lạnh, của những ng&agrave;y tối tăm thường được li&ecirc;n kết với sự t&agrave;n tạ v&agrave; sự chết của lo&agrave;i người. D&acirc;n tộc Celt tin rằng Samhain cho ph&eacute;p những linh hồn người chết được trở về nh&agrave; tr&ecirc;n trần gian v&agrave;o đ&ecirc;m h&ocirc;m đ&oacute;.</p>\r\n\r\n<p style=\"text-align:justify\"><img alt=\"Ảnh lưu trữ miễn phí về ánh sáng, atmosfera de outono, bẩn thỉu\" src=\"https://images.pexels.com/photos/5604228/pexels-photo-5604228.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=750&amp;w=1260\" /></p>\r\n\r\n<p style=\"text-align:justify\">V&agrave;o ng&agrave;y &quot;C&aacute;c vong hồn,&quot; những người ngh&egrave;o đi &quot;khất thực c&ocirc; hồn&quot; (went-a-souling) v&agrave; họ sẽ được bố th&iacute; b&aacute;nh tr&aacute;i gọi l&agrave; &quot;soul cakes&quot; (b&aacute;nh vong hồn) để họ hứa l&agrave; sẽ cầu nguyện cho &quot;c&aacute;c vong hồn.&quot;</p>\r\n\r\n<p style=\"text-align:justify\">Halloween đến Hoa Kỳ do những di d&acirc;n đầu ti&ecirc;n, đa số đến từ Anh Quốc v&agrave; một số từ c&aacute;c v&ugrave;ng thuộc d&acirc;n tộc Celt, họ đ&atilde; đem qua Mỹ kh&aacute; nhiều phong tục kh&aacute;c nhau. Nhưng v&igrave; l&yacute; do t&iacute;n ngưỡng bị giới hạn, nghĩa l&agrave; l&uacute;c đầu c&aacute;c t&ocirc;n gi&aacute;o lớn đưa ra giới luật tương đối chặt chẽ, n&ecirc;n việc cử h&agrave;nh lễ Halloween chưa được phổ cập trong d&acirc;n ch&uacute;ng. M&atilde;i đến thập ni&ecirc;n 1800 mới trở n&ecirc;n tục lệ được nhiều người hưởng ứng.</p>\r\n\r\n<p style=\"text-align:justify\">V&agrave;o giữa thế kỷ 19, tục lệ &quot;trick or treat&quot; chưa được phổ biến ở c&aacute;c th&agrave;nh phố lớn v&igrave; ở những nơi n&agrave;y &quot;h&agrave;ng x&oacute;m l&aacute;ng giềng&quot; hầu như kh&ocirc;ng c&oacute;; nhiều người ở cạnh nhau m&agrave; kh&ocirc;ng quen biết nhau, cho n&ecirc;n Halloween đ&ocirc;i khi g&acirc;y ra những sự việc tai hại. Ng&agrave;y nay, nhiều cộng đồng, nhiều tổ chức đ&atilde; đứng ra bảo trợ c&aacute;c tục lệ vui chơi của ng&agrave;y Halloween, n&ecirc;n n&oacute; đ&atilde; trở th&agrave;nh một ng&agrave;y lễ hội rất vui th&uacute; của thiếu ni&ecirc;n v&agrave; một số thanh ni&ecirc;n.</p>\r\n\r\n<p style=\"text-align:justify\"><img alt=\"Hai đèn Jack O\'lantern\" src=\"https://images.pexels.com/photos/619418/pexels-photo-619418.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=750&amp;w=1260\" /></p>\r\n\r\n<h2 style=\"text-align:justify\"><strong>&Yacute; NGHĨA CỦA NG&Agrave;Y LỄ HỘI HALLOWEEN</strong></h2>\r\n\r\n<h3 style=\"text-align:justify\"><strong><span style=\"font-size:16px\">1. &Yacute; NGHĨA GI&Aacute;O DỤC</span></strong></h3>\r\n\r\n<p style=\"text-align:justify\">H&agrave;nh động v&agrave; cuộc đời của Jack đ&atilde; trở th&agrave;nh những kinh nghiệm để tuổi trẻ r&uacute;t ra một b&agrave;i học l&agrave;m người, đ&oacute; l&agrave;:</p>\r\n\r\n<p style=\"text-align:justify\">Sống kh&ocirc;ng n&ecirc;n tham lam, bủn xỉn, keo kiệt</p>\r\n\r\n<p style=\"text-align:justify\">Phải c&oacute; l&ograve;ng b&aacute;c &aacute;i, từ bi, biết gi&uacute;p đỡ kẻ kh&oacute; khăn</p>\r\n\r\n<p style=\"text-align:justify\">Kh&ocirc;ng n&ecirc;n chơi đ&ugrave;a với ma quỷ. Ma quỷ hiểu theo nghĩa b&oacute;ng l&agrave; những tr&ograve; lừa lọc, đe dọa, l&agrave;m cho người kh&aacute;c sợ h&atilde;i, những việc l&agrave;m tinh qu&aacute;i do tr&iacute; th&ocirc;ng minh v&agrave; tưởng tượng của tuổi trẻ s&aacute;ng tạo ra c&oacute; khi l&agrave;m hại đến người, đến x&atilde; hội... Chơi đ&ugrave;a, giao du với ma quỷ sẽ dễ bị c&aacute;m dỗ đi v&agrave;o đường tối tăm v&agrave; tội lỗi.</p>\r\n\r\n<p style=\"text-align:justify\">Tuy nhi&ecirc;n, chuyện anh ch&agrave;ng Jack trong đ&ecirc;m Halloween cũng ghi nhận một th&aacute;i độ s&ograve;ng phẳng của quỷ, đ&oacute; l&agrave; &quot;&acirc;n đền, o&aacute;n trả&quot; v&agrave; &quot;giữ lời hứa.&quot; D&ugrave; rằng sự &quot;giữ lời hứa&quot; n&agrave;y đ&atilde; l&agrave;m cho Jack rơi v&agrave;o th&acirc;n phận c&ocirc; hồn lang thang vất vưởng.</p>\r\n\r\n<p style=\"text-align:justify\">Đối với c&aacute;c x&atilde; hội &Acirc;u, Mỹ Halloween đ&atilde; trở th&agrave;nh lễ hội vui chơi hằng năm cho trẻ em v&agrave; cả người lớn. &Iacute;t người quan t&acirc;m t&igrave;m hiểu &yacute; nghĩa nh&acirc;n bản của n&oacute;.</p>\r\n\r\n<h3 style=\"text-align:justify\"><span style=\"font-size:16px\"><strong>2. &Yacute; NGHĨA NH&Acirc;N BẢN</strong></span></h3>\r\n\r\n<p style=\"text-align:justify\">Nếu đ&agrave;o s&acirc;u hơn, c&oacute; lẽ sẽ t&igrave;m thấy t&iacute;nh c&aacute;ch nh&acirc;n bản trong c&acirc;u chuyện. Thử đặt c&acirc;u hỏi: tại sao dưới &aacute;nh s&aacute;ng khoa học v&agrave; kỹ thuật m&agrave; c&aacute;c nước &Acirc;u, Mỹ vẫn d&agrave;nh một ng&agrave;y lễ hội cho người của &quot;c&otilde;i &Acirc;m&quot; m&agrave; đại diện l&agrave; ch&agrave;ng Jack?</p>\r\n\r\n<p style=\"text-align:justify\">Jack l&agrave; nh&acirc;n vật tưởng tượng nhưng đ&atilde; thực sự hiện th&acirc;n trong cuộc đời, trong th&acirc;n phận l&agrave;m người... m&agrave; lại l&agrave; một người c&ocirc; đơn. Khi chết, Jack trở th&agrave;nh c&ocirc; hồn, kh&ocirc;ng chỗ dung th&acirc;n... Thi&ecirc;n Đ&agrave;ng v&agrave; Địa Ngục đều từ chối!</p>\r\n\r\n<p style=\"text-align:justify\">Truyền thống lễ hội &Acirc;u Mỹ đ&atilde; d&agrave;nh cho Jack một ng&agrave;y. Một ng&agrave;y được trở lại với c&otilde;i dương. Trong ng&agrave;y đ&oacute;, Jack c&oacute; thể sống vui chơi thoải m&aacute;i, v&igrave; người sống đ&atilde; h&oacute;a trang th&agrave;nh ma quỷ để linh hồn Jack c&oacute; chỗ tr&agrave; trộn v&agrave;o cho đỡ c&ocirc; đơn. Đ&acirc;y l&agrave; &yacute; nghĩa nh&acirc;n bản của lễ hội Halloween.</p>\r\n\r\n<p style=\"text-align:justify\">Với &yacute; nghĩa nh&acirc;n bản n&agrave;y, ng&agrave;y lễ Halloween v&agrave; Rằm th&aacute;ng Bảy &Acirc;m lịch của nước ta c&oacute; thể xem như l&agrave; ng&agrave;y hai c&otilde;i &Acirc;m, Dương hội ngộ trong niềm thương cảm bao la...</p>\r\n\r\n<p style=\"text-align:justify\"><img alt=\"Mở Sách Gần đầu Lâu\" src=\"https://images.pexels.com/photos/3050275/pexels-photo-3050275.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=750&amp;w=1260\" /></p>\r\n', 'https://images.pexels.com/photos/3163994/pexels-photo-3163994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', '<p>Lễ hội Halloween hay lễ hội h&oacute;a trang diễn ra v&agrave;o ng&agrave;y 31/10 h&agrave;ng năm. Đối với nhiều nước tr&ecirc;n thế giới, Halloween rất được ưa chuộng với nhiều &yacute; nghĩa về gi&aacute;o dục, nh&acirc;n văn ph&iacute;a sau những h&igrave;nh ảnh h&oacute;a trang ma quỷ.&nbsp;</p>\r\n\r\n<div>&nbsp;</div>\r\n', 'abca', '2021-03-29 04:43:48', 1),
+(3, 'Lễ  Phục Sinh', 2, '<p>Lễ Phục Sinh thường được xem l&agrave; một trong những ng&agrave;y lễ quan trọng nhất trong năm của người theo Kit&ocirc; gi&aacute;o. Thường diễn ra v&agrave;o th&aacute;ng 3 hoặc th&aacute;ng 4 mỗi năm để tưởng niệm sự kiện chết v&agrave; Phục sinh của Gi&ecirc;-su từ c&otilde;i chết sau khi bị đ&oacute;ng đinh tr&ecirc;n thập tự gi&aacute;. Được người Kit&ocirc; hữu tin l&agrave; đ&atilde; xảy ra v&agrave;o khoảng năm 30 đến năm 33.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\"><em><strong>Lễ Phục Sinh (Easter Day)</strong></em> thường được xem l&agrave; một trong những ng&agrave;y lễ quan trọng nhất trong năm của người theo Thi&ecirc;n Ch&uacute;a gi&aacute;o hay c&ograve;n được gọi kh&aacute;c l&agrave; đạo Kit&ocirc; gi&aacute;o.&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h2 style=\"text-align:justify\"><span style=\"font-size:22px\">T&igrave;m hiểu về Lễ Phục Sinh</span></h2>\r\n\r\n<h3 style=\"text-align:justify\"><br />\r\n<span style=\"font-size:20px\">Sự Phục sinh của Ch&uacute;a Giesu diễn ra như thế n&agrave;o?</span></h3>\r\n\r\n<p style=\"text-align:justify\">Một c&aacute;ch đơn giản, dễ hiểu nhất Lễ Phục Sinh l&agrave; Lễ mừng Ch&uacute;a sống lại. Được xem l&agrave; một trong những ng&agrave;y lễ quan trọng nhất trong năm theo đạo Thi&ecirc;n Ch&uacute;a gi&aacute;o.&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<div style=\"text-align: center;\">\r\n<div><img alt=\"Tìm hiểu về Lễ Phục Sinh\" src=\"https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/04_2020/tim-hieu-ve-le-phuc-sinh-2.jpg\" title=\"Tìm hiểu về Lễ Phục Sinh\" /></div>\r\n\r\n<div>Đ&acirc;y l&agrave; ng&agrave;y lễ đặc biệt với người C&ocirc;ng gi&aacute;o</div>\r\n</div>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">Th&ocirc;ng thường sẽ diễn ra v&agrave;o th&aacute;ng 3 hoặc th&aacute;ng 4 h&agrave;ng năm (được t&iacute;nh l&agrave; ng&agrave;y chủ nhật giữa 22 th&aacute;ng 3 v&agrave; 25 th&aacute;ng 4) tưởng niệm ng&agrave;y Ch&uacute;a Giesu sống lại từ c&otilde;i chết sau khi bị đ&oacute;ng định tr&ecirc;n thập tự. Đ&acirc;y l&agrave; điều được những người Kito tin l&agrave; xảy ra v&agrave;o khoảng thời gian n&agrave;y trong những năm 30-40 CN.</p>\r\n\r\n<p style=\"text-align:justify\">Theo kinh T&acirc;n Ước, Ch&uacute;a Giesu l&agrave; Thi&ecirc;n Ch&uacute;a v&agrave; người c&oacute; quyền năng ph&oacute; mạng cuộc sống của m&igrave;nh để cứu chuộc nh&acirc;n loại cũng như phục hồi sự sống ấy. Ch&iacute;nh v&igrave; vậy, sau khi chết ng&agrave;i đ&atilde; sống lại.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<div style=\"text-align: center;\">\r\n<div><img alt=\"Tìm hiểu về Lễ Phục Sinh\" src=\"https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/04_2020/tim-hieu-ve-le-phuc-sinh-6.jpg\" title=\"Tìm hiểu về Lễ Phục Sinh\" /></div>\r\n\r\n<div>Lễ Phục Sinh để mừng ng&agrave;y Ch&uacute;a sống lại</div>\r\n</div>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">Phục sinh cũng được d&ugrave;ng để chỉ một m&ugrave;a trong năm phụng vụ gọi l&agrave; M&ugrave;a Phục sinh, k&eacute;o d&agrave;i 50 ng&agrave;y từ lễ Phục sinh đến Lễ Hiện xuống.&nbsp;V&agrave;o những ng&agrave;y n&agrave;y, theo Gi&aacute;o luật, những t&iacute;n hữu C&ocirc;ng gi&aacute;o giảm c&aacute;c cuộc vui chơi v&agrave; giải tr&iacute;, giảm c&aacute;c h&igrave;nh thức ph&ocirc; trương, lễ cưới.</p>\r\n\r\n<p style=\"text-align:justify\">Đối với ri&ecirc;ng đạo Thi&ecirc;n Ch&uacute;a gi&aacute;o, Lễ Phục Sinh đ&aacute;nh dấu kết th&uacute;c 40 ng&agrave;y chay tịnh ki&ecirc;ng thịt v&agrave; s&aacute;m hối.</p>\r\n\r\n<p style=\"text-align:justify\">Tại Việt Nam, những hoạt động t&iacute;n ngưỡng trong đ&oacute; c&oacute; <em><strong>ng&agrave;y Lễ Phục Sinh</strong></em> cũng đ&atilde; được &quot;Việt h&oacute;a&quot; bằng nhiều c&aacute;ch cho ph&ugrave; hợp với truyền thống của d&acirc;n tộc. V&agrave; ng&agrave;y Lễ Phục Sinh cũng l&agrave; ng&agrave;y người C&ocirc;ng gi&aacute;o nhớ đến v&agrave; chia sẻ đối với những người c&oacute; ho&agrave;n cảnh bất hạnh trong x&atilde; hội dưới nhiều h&igrave;nh thức thăm hỏi, tặng qu&agrave;, động vi&ecirc;n...</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h3 style=\"text-align:justify\"><span style=\"font-size:20px\">Biểu tượng trong ng&agrave;y Lễ Phục Sinh</span></h3>\r\n\r\n<h4 style=\"text-align:justify\"><br />\r\n<span style=\"font-size:18px\"><strong>Quả trứng Phục Sinh</strong></span></h4>\r\n\r\n<p style=\"text-align:justify\">Khi nhắc đến Lễ Phục Sinh kh&ocirc;ng thể kh&ocirc;ng nghĩ đến những quả trứng m&agrave;u sắc sặc sỡ với c&aacute;c n&eacute;t vẽ trang tr&iacute;, biểu tượng cho sức sống tươi mới bừng dậy trong m&ugrave;a xu&acirc;n.&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<div style=\"text-align: center;\">\r\n<div><img alt=\"Tìm hiểu về Lễ Phục Sinh\" src=\"https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/04_2020/tim-hieu-ve-le-phuc-sinh-1.jpg\" /></div>\r\n\r\n<div>Trứng Phục Sinh cực kỳ quen thuộc</div>\r\n</div>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">Ở c&aacute;c nước phương T&acirc;y, c&oacute; lẽ h&igrave;nh ảnh những quả trứng s&ocirc;c&ocirc;la hoặc trứng nhuộm tr&ecirc;n b&agrave;n tiệc Phục sinh đ&atilde; qu&aacute; quen thuộc, bởi ng&agrave;y Lễ n&agrave;y được đưa v&agrave;o phim ảnh, hoạt h&igrave;nh của c&aacute;c nước một c&aacute;ch rất dễ thương.</p>\r\n\r\n<p style=\"text-align:justify\">Trong những ng&agrave;y trước Lễ Phục Sinh, trong c&aacute;c cửa h&agrave;ng, nhiều người t&igrave;m mua những hộp thuốc m&agrave;u để vẽ trứng. V&agrave; lũ trẻ con cực kỳ th&iacute;ch việc d&ugrave;ng những c&acirc;y b&uacute;t l&ocirc;ng hoặc b&uacute;t dạ để trang tr&iacute; trứng. Những vỏ trứng đ&atilde; r&uacute;t ruột được t&ocirc; vẽ một c&aacute;ch đầy tr&igrave;u mến bằng m&agrave;u nước hoặc b&uacute;t dạ sẽ được tết th&ecirc;m dải băng xinh để trang tr&iacute; cho v&ograve;ng hoa Phục sinh ở nh&agrave;.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<div style=\"text-align: center;\">\r\n<div><img alt=\"Tìm hiểu về Lễ Phục Sinh\" src=\"https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/04_2020/tim-hieu-ve-le-phuc-sinh-4.jpg\" title=\"Tìm hiểu về Lễ Phục Sinh\" /></div>\r\n\r\n<div>Những quả trứng được trang tr&iacute; đầy m&agrave;u sắc</div>\r\n</div>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">C&aacute;c nh&agrave; thờ sẽ c&oacute; thể b&agrave;y b&aacute;n những đ&atilde; <em><strong>quả trứng Phục Sinh </strong></em>trang tr&iacute; sẵn bằng nhựa, cỡ lớn tạo ra bất ngờ cho những bạn nhỏ hiếu kỳ.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h4 style=\"text-align:justify\"><span style=\"font-size:18px\"><strong>Nến Phục sinh</strong></span></h4>\r\n\r\n<p style=\"text-align:justify\">Cũng l&agrave; một biểu tượng cực quen thuộc trong ng&agrave;y lễ n&agrave;y, h&igrave;nh ảnh Nến Phục Sinh với ngọn lửa ấm &aacute;p, mang đến &aacute;nh s&aacute;ng v&agrave; sự chở che. Lửa Phục Sinh cũng được xem l&agrave; h&igrave;nh ảnh thắp s&aacute;ng chuỗi ng&agrave;y d&agrave;i đ&ecirc;m tối v&agrave; l&agrave; ngọn đ&egrave;n soi s&aacute;ng cho họ t&igrave;m đến những điều đ&uacute;ng đắn v&agrave; sự b&igrave;nh an.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<div style=\"text-align: center;\">\r\n<div><img alt=\"Tìm hiểu về Lễ Phục Sinh\" src=\"https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/04_2020/tim-hieu-ve-le-phuc-sinh-7.jpg\" /></div>\r\n\r\n<div>C&acirc;y nến Phục Sinh hiện th&acirc;n cho sự ấm &aacute;p, chỉ đường</div>\r\n</div>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">Trước khi bắt đầu Th&aacute;nh lễ Phục sinh, c&aacute;c linh mục sẽ l&agrave;m nghi thức rước lửa xung quanh Th&aacute;nh đường, c&aacute;c gi&aacute;o d&acirc;n cũng sẽ c&ugrave;ng nhau thắp s&aacute;ng những ngọn nến tr&ecirc;n tay m&igrave;nh.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<h4 style=\"text-align:justify\"><span style=\"font-size:18px\"><strong>Chu&ocirc;ng Phục sinh</strong></span></h4>\r\n\r\n<p style=\"text-align:justify\">Từ thứ Năm Tuần Th&aacute;nh đến lễ Phục sinh, kh&ocirc;ng được rung chu&ocirc;ng nh&agrave; thờ. Tại t&ograve;a th&aacute;nh nằm Vatican nằm giữa&nbsp;Rome, Italia c&aacute;c quả chu&ocirc;ng tượng trưng được đưa về Rome v&agrave; được Đức Th&aacute;nh Cha ban ph&eacute;p l&agrave;nh. Khi trở lại, ch&uacute;ng mang đầy trứng Phục sinh v&agrave; tr&ecirc;n đường đi, được rải cho trẻ em v&agrave; người lớn.</p>\r\n', 'https://images.pexels.com/photos/6845737/pexels-photo-6845737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', '<p>Lễ Phục Sinh thường được xem l&agrave; một trong những ng&agrave;y lễ quan trọng nhất trong năm của người theo Kit&ocirc; gi&aacute;o. Thường diễn ra v&agrave;o th&aacute;ng 3 hoặc th&aacute;ng 4 mỗi năm để tưởng niệm sự kiện chết v&agrave; Phục sinh của Gi&ecirc;-su từ c&otilde;i chết sau khi bị đ&oacute;ng đinh tr&ecirc;n thập tự gi&aacute;. Được người Kit&ocirc; hữu tin l&agrave; đ&atilde; xảy ra v&agrave;o khoảng năm 30 đến năm 33.</p>\r\n', '', '2021-03-15 08:39:03', 1),
+(6, 'Nguồn Gốc Và Ý Nghĩa Ngày Tết Nguyên Đán', 1, '<p>1. Tết Nguy&ecirc;n Đ&aacute;n l&agrave; g&igrave;?</p>\r\n\r\n<p>Tết Nguy&ecirc;n Đ&aacute;n của Việt Nam (hay c&ograve;n gọi l&agrave; Tết Cả, Tết Ta, Tết &Acirc;m lịch, Tết Việt Nam hay chỉ đơn giản Tết) l&agrave; dịp lễ quan trọng nhất của Việt Nam, theo ảnh hưởng văn h&oacute;a của Tết &Acirc;m lịch Trung Hoa.</p>\r\n\r\n<p><img alt=\" Tết Nguyên Đán \" class=\"aligncenter\" src=\"https://www.vietnambooking.com/wp-content/uploads/2019/01/dulich-cac-nuoc-chauA-tim-hieu-phong-tuc-don-tet-nguyen-dan-15012019-1.jpg\" style=\"border:0px; box-sizing:border-box; clear:both; display:block; font-family:inherit; font-stretch:inherit; font-style:inherit; font-variant:inherit; font-weight:inherit; height:auto; line-height:inherit; margin:0px auto; max-width:100%; outline:0px; padding:0px; text-align:center; vertical-align:middle; width:648px\" /></p>\r\n\r\n<p>H&agrave;ng năm, Tết được tổ chức v&agrave;o ng&agrave;y mồng 1 th&aacute;ng 1 theo &acirc;m lịch tr&ecirc;n đất nước Việt Nam v&agrave; ở một v&agrave;i nước kh&aacute;c c&oacute; cộng đồng người Việt sinh sống. Trước ng&agrave;y Tết, thường c&oacute; những ng&agrave;y kh&aacute;c để sửa soạn như Tết T&aacute;o Qu&acirc;n (23 th&aacute;ng chạp &acirc;m lịch) v&agrave; Tất Ni&ecirc;n (29 hoặc 30 th&aacute;ng chạp &acirc;m lịch). Trong những ng&agrave;y Tết, c&aacute;c gia đ&igrave;nh sum họp b&ecirc;n nhau, c&ugrave;ng thăm hỏi người th&acirc;n, mừng tuổi v&agrave; thờ c&ugrave;ng tổ ti&ecirc;n&hellip;</p>\r\n\r\n<p><img alt=\"Tết Nguyên đán \" class=\"aligncenter\" src=\"https://media1.reatimes.vn/upload/RNyNCf85pvmMArDPs0HPdw/files/lich%20nghi%20tet%20nguyen%20dan.jpg\" style=\"border:0px; box-sizing:border-box; clear:both; display:block; font-family:inherit; font-stretch:inherit; font-style:inherit; font-variant:inherit; font-weight:inherit; height:auto; line-height:inherit; margin:0px auto; max-width:100%; outline:0px; padding:0px; text-align:center; vertical-align:middle; width:600px\" /></p>\r\n\r\n<p>Nguy&ecirc;n nghĩa của Tết ch&iacute;nh l&agrave; &ldquo;tiết&rdquo;. Văn h&oacute;a Việt &ndash; thuộc văn minh n&ocirc;ng nghiệp l&uacute;a nước &ndash; do nhu cầu canh t&aacute;c n&ocirc;ng nghiệp đ&atilde; &ldquo;ph&acirc;n chia&rdquo; thời gian trong một năm th&agrave;nh 24 tiết kh&aacute;c nhau (v&agrave; ứng với mỗi tiết n&agrave;y c&oacute; một thời khắc &ldquo;giao thời&rdquo;) trong đ&oacute; tiết quan trọng nhất l&agrave; tiết khởi đầu của một chu kỳ canh t&aacute;c, gieo trồng, tức l&agrave; Tiết Nguy&ecirc;n Đ&aacute;n sau n&agrave;y được biết đến l&agrave; Tết Nguy&ecirc;n Đ&aacute;n.</p>\r\n\r\n<p><span style=\"font-family:inherit\">Nguy&ecirc;n:</span>&nbsp;c&oacute; nghĩa l&agrave; Khởi Đầu.<br />\r\n<span style=\"font-family:inherit\">Đ&aacute;n:</span>&nbsp;c&oacute; nghĩa l&agrave; Trọn Vẹn.<br />\r\n<span style=\"font-family:inherit\">Nguy&ecirc;n Đ&aacute;n:</span>&nbsp;c&oacute; nghĩa l&agrave; sự Khởi Đầu Trọn Vẹn.</p>\r\n\r\n<p>Tết Nguy&ecirc;n Đ&aacute;n l&agrave; lễ tết đầu ti&ecirc;n của một năm. Tết được bắt đầu từ l&uacute;c giao thừa c&ugrave;ng với lễ trừ tịch. Theo chữ H&aacute;n N&ocirc;m, Nguy&ecirc;n c&oacute; nghĩa l&agrave; bắt đầu, Đ&aacute;n l&agrave; buổi sớm mai Tết Nguy&ecirc;n Đ&aacute;n tức l&agrave; tết bắt đầu đầu năm, mở đầu cho mọi c&ocirc;ng ăn việc l&agrave;m với tất cả mọi cảnh vật đều mới mẻ đ&oacute;n xu&acirc;n sang.<br />\r\nNăm mới đến, những sự may mắn mới đến, v&agrave; bao nhi&ecirc;u điều lo &acirc;u phiền to&aacute;i của năm cũ đều theo năm cũ m&agrave; đi hết.</p>\r\n\r\n<h3>2. Nguồn gốc v&agrave; &yacute; nghĩa của Tết Nguy&ecirc;n Đ&aacute;n</h3>\r\n\r\n<h4>2.1. Nguồn gốc</h4>\r\n\r\n<p><img alt=\"NGUỒN GỐC TẾT NGUYÊN ĐÁN \" class=\"aligncenter\" src=\"https://file.hstatic.net/1000330190/file/tet_1.jpg\" style=\"border:0px; box-sizing:border-box; clear:both; display:block; font-family:inherit; font-stretch:inherit; font-style:inherit; font-variant:inherit; font-weight:inherit; height:auto; line-height:inherit; margin:0px auto; max-width:100%; outline:0px; padding:0px; text-align:center; vertical-align:middle; width:598px\" /></p>\r\n\r\n<p>Theo lịch sử Trung Quốc, nguồn gốc Tết Nguy&ecirc;n Đ&aacute;n c&oacute; từ đời Tam Ho&agrave;ng Ngũ Đế v&agrave; thay đổi theo từng thời kỳ. Đời Tam Vương, nh&agrave; Hạ chuộng m&agrave;u đen n&ecirc;n chọn th&aacute;ng gi&ecirc;ng, tức th&aacute;ng Dần. Nh&agrave; Thương th&iacute;ch m&agrave;u trắng n&ecirc;n lấy th&aacute;ng Sửu, tức th&aacute;ng chạp, l&agrave;m th&aacute;ng đầu năm.</p>\r\n\r\n<p>Nh&agrave; Chu ưa sắc đỏ n&ecirc;n chọn th&aacute;ng T&yacute;, tức th&aacute;ng mười một, l&agrave;m th&aacute;ng Tết. C&aacute;c vua ch&uacute;a n&oacute;i tr&ecirc;n quan niệm về ng&agrave;y giờ &ldquo;tạo thi&ecirc;n lập địa&rdquo; như sau: giờ T&yacute; th&igrave; c&oacute; trời, giờ Sửu th&igrave; c&oacute; đất, giờ Dần sinh lo&agrave;i người n&ecirc;n đặt ra ng&agrave;y tết kh&aacute;c nhau.</p>\r\n\r\n<p>Đời nh&agrave; Đ&ocirc;ng Chu, Khổng Phu Tử đổi ng&agrave;y Tết v&agrave;o một th&aacute;ng nhất định l&agrave; th&aacute;ng Dần. Đời nh&agrave; Tần (thế kỷ 3 TCN), Tần Thủy Ho&agrave;ng lại đổi qua th&aacute;ng Hợi, tức th&aacute;ng mười. Cho đến khi nh&agrave; H&aacute;n, H&aacute;n Vũ Đế (140 TCN) lại đặt ng&agrave;y Tết v&agrave;o th&aacute;ng Dần, tức th&aacute;ng gi&ecirc;ng. Từ đ&oacute; về sau, trải qua bao nhi&ecirc;u thời đại, kh&ocirc;ng c&ograve;n nh&agrave; vua n&agrave;o thay đổi về th&aacute;ng Tết nữa.</p>\r\n\r\n<p>Đến đời Đ&ocirc;ng Phương S&oacute;c, &ocirc;ng cho rằng ng&agrave;y tạo thi&ecirc;n lập địa c&oacute; th&ecirc;m giống G&agrave;, ng&agrave;y thứ hai c&oacute; th&ecirc;m Ch&oacute;, ng&agrave;y thứ ba c&oacute; Lợn, ng&agrave;y thứ tư sinh D&ecirc;, ng&agrave;y thứ năm sinh Tr&acirc;u, ng&agrave;y thứ s&aacute;u sinh Ngựa, ng&agrave;y thứ bảy sinh lo&agrave;i Người v&agrave; ng&agrave;y thứ t&aacute;m mới sinh ra ngũ cốc. V&igrave; thế, ng&agrave;y Tết thường được kể từ ng&agrave;y mồng một cho đến hết ng&agrave;y mồng bảy th&aacute;ng gi&ecirc;ng (8 ng&agrave;y).</p>\r\n\r\n<p>Tết Nguy&ecirc;n Đ&aacute;nTết Nguy&ecirc;n Đ&aacute;n c&oacute; nguồn gốc từ l&acirc;u đời</p>\r\n\r\n<p>Ngo&agrave;i ra, người ta thường n&oacute;i &ldquo;20 Tết&rdquo;, &ldquo;15 Tết&rdquo;&hellip; đ&acirc;y chỉ l&agrave; n&oacute;i những ng&agrave;y ảnh hưởng do những c&ocirc;ng việc để chuẩn bị đ&oacute;n Tết hay dư &acirc;m c&ograve;n lại của những ng&agrave;y Tết.</p>\r\n\r\n<p>Ng&agrave;y nay, c&ugrave;ng với người Hoa, người Việt, c&aacute;c d&acirc;n tộc kh&aacute;c chịu ảnh hưởng của văn ho&aacute; Trung Hoa như Triều Ti&ecirc;n, M&ocirc;ng Cổ, T&acirc;y Tạng, Nepal, Bhutan, H&rsquo;m&ocirc;ng Trung Quốc cũng tổ chức Tết &acirc;m lịch v&agrave; nghỉ lễ ch&iacute;nh thức. Trước đ&acirc;y Nhật Bản cũng cử h&agrave;nh Tết &acirc;m lịch, nhưng từ năm Minh Trị thứ 6 (1873) họ đ&atilde; chuyển sang d&ugrave;ng dương lịch cho c&aacute;c ng&agrave;y lễ tương ứng trong &acirc;m lịch.</p>\r\n\r\n<h4>2.2. &Yacute; nghĩa</h4>\r\n\r\n<p><img alt=\"ý nghĩa ngày tết nguyên đán\" class=\"aligncenter\" src=\"https://mamafood.vn/wp-content/uploads/2020/05/ke-hoach-tang-qua-tet-nguyen-dan.png\" style=\"border:0px; box-sizing:border-box; clear:both; display:block; font-family:inherit; font-stretch:inherit; font-style:inherit; font-variant:inherit; font-weight:inherit; height:auto; line-height:inherit; margin:0px auto; max-width:100%; outline:0px; padding:0px; text-align:center; vertical-align:middle; width:589px\" /></p>\r\n\r\n<p>Ng&agrave;y Tết l&agrave; dịp để mọi người h&acirc;n hoan ch&uacute;c cho nhau những điều tốt l&agrave;nh nhất cho năm mới v&agrave; bỏ qua hết những x&iacute;ch m&iacute;ch đ&atilde; l&agrave;m mất l&ograve;ng nhau trong năm cũ. Ai ai cũng đều tay bắt mặt mừng v&agrave; d&agrave;nh nhiều th&igrave; giờ đến thăm họ h&agrave;ng, bạn b&egrave;, v&agrave; b&agrave; con lối x&oacute;m. Ng&agrave;y Tết c&ograve;n l&agrave; ng&agrave;y khởi đầu cho một hy vọng mới, một cố gắng mới, v&agrave; một cuộc đời mới trong tương lai.</p>\r\n\r\n<p>Ng&agrave;y Tết cũng l&agrave; ng&agrave;y đo&agrave;n tụ. Người đi l&agrave;m ăn xa x&ocirc;i đến mấy cũng cố trở về qu&ecirc;, tức l&agrave; nơi m&igrave;nh được sinh ra hay qu&ecirc; qu&aacute;n của cha mẹ, để ăn Tết v&agrave; c&uacute;ng tổ ti&ecirc;n c&ugrave;ng mừng tuổi &ocirc;ng b&agrave;, cha mẹ, họ h&agrave;ng, v&agrave; b&agrave; con lối x&oacute;m. Mọi người đều nghỉ ngơi v&agrave; ăn chơi cho bỏ những ng&agrave;y l&agrave;m lụng vất vả.</p>\r\n\r\n<p>Người Việt ta c&oacute; th&oacute;i quen l&agrave; quanh năm chăm chỉ l&agrave;m ăn. Suốt cả năm ở nơi th&agrave;nh thị, đa số những người bu&ocirc;n b&aacute;n v&agrave; c&aacute;c c&ocirc;ng nh&acirc;n vi&ecirc;n ở xưởng m&aacute;y kh&ocirc;ng c&oacute; th&igrave; giờ nghỉ ngơi. Ở nơi n&ocirc;ng th&ocirc;n đồng ruộng cũng vậy, quanh năm người n&ocirc;ng d&acirc;n cũng kh&ocirc;ng c&oacute; ng&agrave;y n&agrave;o l&agrave; ng&agrave;y Chủ Nhật n&ecirc;n mọi người đều mệt mỏi v&agrave; kh&ocirc;ng c&oacute; th&igrave; giờ để đi thăm họ h&agrave;ng b&agrave; con c&ugrave;ng bằng hữu ở xa được.</p>\r\n\r\n<p>Ch&iacute;nh v&igrave; thế m&agrave; người Việt ta đ&atilde; nhờ những ng&agrave;y Tết để c&oacute; dịp nghỉ xả hơi v&agrave; thăm hỏi nhau hầu xiết chặt mối d&acirc;y t&igrave;nh cảm giữa gia đ&igrave;nh, bạn b&egrave;, v&agrave; h&agrave;ng x&oacute;m.</p>\r\n\r\n<p>Tết Nguy&ecirc;n Đ&aacute;n, c&ograve;n gọi Tết Ta, Tết &Acirc;m Lịch, Tết Cổ Truyền, năm mới hay chỉ đơn giản Tết, l&agrave; dịp lễ quan trọng nhất trong văn ho&aacute; của người Việt Nam v&agrave; một số c&aacute;c d&acirc;n tộc chịu ảnh hưởng văn h&oacute;a Trung Quốc kh&aacute;c.</p>\r\n\r\n<p>&Yacute; nghĩa thi&ecirc;ng li&ecirc;ng nhất của Tết ở chỗ n&oacute; l&agrave; dịp để người Việt nhớ về cội nguồn, &ocirc;ng b&agrave; tổ ti&ecirc;n. Ng&agrave;y tết đem lại một sự khởi đầu mới, rũ bỏ những g&igrave; kh&ocirc;ng hay đẹp của năm qua n&ecirc;n mọi người đều cố gắng vui vẻ độ lượng với nhau, bỏ qua hiềm kh&iacute;ch cũ. L&ograve;ng người n&agrave;o cũng tr&agrave;n đầy ho&agrave;i b&atilde;o về hạnh ph&uacute;c v&agrave; thịnh vượng cho năm mới.</p>\r\n\r\n<h3>3. Những biến đổi của văn h&oacute;a Tết Nguy&ecirc;n Đ&aacute;n ng&agrave;y nay so với ng&agrave;y xưa</h3>\r\n\r\n<p>Ng&agrave;y nay người d&acirc;n ăn Tết đ&atilde; c&oacute; phần đổi kh&aacute;c hơn so với trước kia, dường như d&acirc;n ta ăn Tết &ldquo;t&acirc;y ho&aacute;&rdquo; dần đi, sự thay đổi đ&oacute; phần n&agrave;o được thể hiện qua c&aacute;ch đ&oacute;n tết v&agrave; trong việc sắm tết.</p>\r\n\r\n<p><img alt=\"Ý nghĩa đặc biệt của ngày Tết Nguyên Đán mà bạn nên biết \" class=\"aligncenter\" src=\"https://blog.viecngay.vn/wp-content/uploads/2018/02/journeyvietnam.com_.jpg\" style=\"border:0px; box-sizing:border-box; clear:both; display:block; font-family:inherit; font-stretch:inherit; font-style:inherit; font-variant:inherit; font-weight:inherit; height:auto; line-height:inherit; margin:0px auto; max-width:100%; outline:0px; padding:0px; text-align:center; vertical-align:middle; width:600px\" /></p>\r\n\r\n<p>Đời sống kinh tế được n&acirc;ng cao đi k&egrave;m với những gi&aacute; trị hưởng thụ về văn h&oacute;a tinh thần v&agrave; vật chất, nhu cầu ăn ngon mặc đẹp l&agrave; tự nhi&ecirc;n v&agrave; c&oacute; thể đ&aacute;p ứng ngay khi cần chứ kh&ocirc;ng phải đợi đến Tết như ng&agrave;y xưa. Hơn nữa, ng&agrave;y nay trong một năm c&oacute; rất nhiều ng&agrave;y lễ kh&aacute;c đang chi phối tầm quan trọng của ng&agrave;y Tết cổ truyền. V&igrave; vậy, dường như Tết b&acirc;y giờ c&oacute; phần nhạt hơn so với Tết xưa.</p>\r\n\r\n<p>Trong đời sống hiện đại, việc sắm Tết cũng &ldquo;hiện đại&rdquo; theo v&agrave; sự ảnh hưởng văn h&oacute;a phương T&acirc;y rất r&otilde; n&eacute;t. Giờ đ&acirc;y người d&acirc;n &iacute;t h&agrave;o hứng với việc mua thực phẩm về tự chế biến m&agrave; đặt mua đồ đ&atilde; chế biến sẵn cho tiện. M&acirc;m cỗ ng&agrave;y Tết giờ cũng phong ph&uacute; hơn v&agrave; đa dạng hơn. B&ecirc;n cạnh những m&oacute;n ăn truyền thống của người Việt như b&aacute;nh chưng xanh, gi&ograve;, c&aacute;c m&oacute;n rau, m&oacute;n x&agrave;o th&igrave; c&ograve;n c&oacute; những m&oacute;n ăn được du nhập từ Phương T&acirc;y.</p>\r\n\r\n<p>Trải qua bao biến thi&ecirc;n của thời đại, đến nay, quan niệm về Tết đ&atilde; c&oacute; nhiều thay đổi cả về mặt kh&aacute;i niệm lẫn h&agrave;nh vi. B&acirc;y giờ người ta quan niệm l&agrave; &ldquo;nghỉ Tết&rdquo;, &ldquo;chơi Tết&rdquo; chứ kh&ocirc;ng c&ograve;n l&agrave; &ldquo;ăn Tết&rdquo;. Khi c&aacute;i ăn, c&aacute;i mặc kh&ocirc;ng c&ograve;n l&agrave; vấn đề quan trọng trong ng&agrave;y Tết th&igrave; người ta hướng đến tinh thần nhiều hơn. Tết hiện đại mọi người th&iacute;ch nghỉ ngơi thoải m&aacute;i, đi chơi nhiều hơn, nh&acirc;n dịp Tết nhiều gia đ&igrave;nh đ&atilde; l&ecirc;n lịch tr&igrave;nh cho một chuyến du lịch với người th&acirc;n trong nh&agrave; hoặc c&ugrave;ng bạn b&egrave;, đồng nghiệp.</p>\r\n', 'https://images.pexels.com/photos/1313814/pexels-photo-1313814.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', '<p>Tết Nguy&ecirc;n Đ&aacute;n l&agrave; lễ hội lớn nhất trong c&aacute;c lễ hội truyền thống của Việt Nam, l&agrave; điểm giao thời giữa năm cũ v&agrave; năm mới, giữa một chu kỳ vận h&agrave;nh của đất trời, vạn vật cỏ c&acirc;y.</p>\r\n', 'Đặng Minh Tuấn', '2021-03-15 08:47:55', 1),
+(7, '10 lễ hội Hindu nổi tiếng bạn nên biết', 2, '<p style=\"text-align:justify\">Diwali</p>\r\n\r\n<p style=\"text-align:justify\">Lễ hội &aacute;nh s&aacute;ng - Diwali hoặc Deepavali - l&agrave; lễ hội phổ biến nhất tr&ecirc;n tiểu lục địa Ấn Độ. Bản chất cơ bản của lễ hội l&agrave; &aacute;nh s&aacute;ng sẽ thay thế b&oacute;ng tối, hay chiến thắng của sự tốt l&agrave;nh đối với c&aacute;i &aacute;c. DIY (đ&egrave;n) t&ocirc; điểm cho mọi ng&oacute;c ng&aacute;ch v&agrave;o buổi tối, v&agrave; cũng c&oacute; ph&aacute;o hoa v&agrave; một bữa tiệc truyền thống ngon miệng.</p>\r\n\r\n<p><img alt=\"hoa rangoli cho Diwali hoặc pongal được làm bằng hoa cúc vạn thọ hoặc zendu và cánh hoa hồng đỏ trên nền trắng với diwali diya ở giữa, sel - Trip14.com\" class=\"td-animation-stack-type0-1\" src=\"https://cdn.trip14.com/trip14.com_3563b17f146ba223249e94df006ba96d.jpg\" style=\"border:0px; box-sizing:border-box; color:rgb(34, 34, 34); font-family:verdana,geneva,sans-serif; font-size:15px; height:auto; max-width:100%; text-align:justify; width:696px\" /></p>\r\n\r\n<p style=\"text-align:center\"><em>hoa rangoli cho Diwali hoặc pongal được l&agrave;m bằng hoa c&uacute;c vạn thọ hoặc zendu v&agrave; c&aacute;nh hoa hồng đỏ tr&ecirc;n nền trắng với diwali diya ở giữa</em></p>\r\n\r\n<p style=\"text-align:justify\">Holi</p>\r\n\r\n<p style=\"text-align:justify\">L&agrave; một lễ hội của m&agrave;u sắc v&agrave; l&agrave; điềm b&aacute;o của m&ugrave;a xu&acirc;n ở Ấn Độ. Sự khởi đầu của Holi được đ&aacute;nh dấu bằng việc đốt một h&igrave;nh nộm của - một thực thể xấu xa trong thần thoại Ấn Độ gi&aacute;o - để biểu thị sự chiến thắng của c&aacute;i thiện đối với c&aacute;i &aacute;c. Đ&ecirc;m vui chơi quanh đống lửa diễn ra cho đến khi than hồng t&agrave;n hết. S&aacute;ng h&ocirc;m sau, mọi người bắt đầu b&ocirc;i bột m&agrave;u l&ecirc;n nhau, thậm ch&iacute; đ&ocirc;i khi họ c&ograve;n&nbsp;ăn một ch&uacute;t cần sa.</p>\r\n\r\n<p><img alt=\"Trống trong đền trong lễ hội Holi, Mathura, Uttar Pradesh, Ấn Độ - Trip14.com\" class=\"td-animation-stack-type0-1\" src=\"https://cdn.trip14.com/trip14.com_d850e543925af835e88739e23f8617e6.jpg\" style=\"border:0px; box-sizing:border-box; color:rgb(34, 34, 34); font-family:verdana,geneva,sans-serif; font-size:15px; height:auto; max-width:100%; text-align:justify; width:696px\" /></p>\r\n\r\n<p style=\"text-align:center\"><em>Trống trong đền trong lễ hội Holi, Mathura, Uttar Pradesh, Ấn Độ</em></p>\r\n\r\n<p style=\"text-align:justify\">Onam</p>\r\n\r\n<p style=\"text-align:justify\">Onam được tổ chức với sự cuồng nhiệt v&agrave; lễ hội tối đa bao gồm c&aacute;c m&ocirc;n thể thao truyền thống như đua thuyền v&agrave; k&eacute;o co. Truyền thuyết đằng sau lễ kỷ niệm li&ecirc;n quan đến việc trở về qu&ecirc; hương của một vị thần t&ecirc;n l&agrave; Mahabali, v&agrave; tương tự như truyền thuyết về Holika v&agrave; lễ hội Holi. Trong cả hai trường hợp, chiến thắng của hy vọng về sự tuyệt vọng được t&ocirc;n vinh, mặc d&ugrave; Mahabali được coi l&agrave; với sự t&ocirc;n trọng tối đa v&agrave; Holika th&igrave; kh&ocirc;ng. Onam đang ph&aacute;t triển vượt ra ngo&agrave;i bi&ecirc;n giới t&ocirc;n gi&aacute;o v&agrave; trở th&agrave;nh một lễ hội đa dạng về t&ocirc;n gi&aacute;o ở Kerala.</p>\r\n\r\n<p><img alt=\"Tiger Dance - Trip14.com\" class=\"td-animation-stack-type0-1\" src=\"https://cdn.trip14.com/trip14.com_c107a46b4a7c02b0b5ce5729244a8d3d.jpg\" style=\"border:0px; box-sizing:border-box; color:rgb(34, 34, 34); font-family:verdana,geneva,sans-serif; font-size:15px; height:auto; max-width:100%; text-align:justify; width:696px\" /></p>\r\n\r\n<p style=\"text-align:center\"><em>Tiger Dance</em></p>\r\n\r\n<p style=\"text-align:justify\">Maha Shivaratri</p>\r\n\r\n<p style=\"text-align:justify\">Shiva l&agrave; vị thần quan trọng h&agrave;ng đầu trong Ấn Độ gi&aacute;o v&agrave; được coi l&agrave; kẻ hủy diệt. Maha Shivaratri hay &#39;đ&ecirc;m tuyệt vời của Shiva&#39;, kỷ niệm uy quyền của Shiva. Mọi người kh&ocirc;ng ngủ v&agrave; thay v&agrave;o đ&oacute; cầu nguyện với ch&uacute;a tể vĩ đại. Hầu hết c&aacute;c m&ocirc;n đệ tận tụy của Ch&uacute;a Shiva mừng lễ Maha Shivaratri bằng c&aacute;ch nhịn ăn v&agrave; tụng kinh những b&agrave;i th&aacute;nh ca cho Tandava, một điệu nhảy được thực hiện bởi Lord Shiva.</p>\r\n\r\n<p><img alt=\"Những người hành hương Ấn giáo tắm thánh trong các băng đảng sông trong lễ hội Maha Shivaratri tốt lành ở Varanasi, Uttar Pradesh, Ấn Độ - Trip14.com\" class=\"td-animation-stack-type0-1\" src=\"https://cdn.trip14.com/trip14.com_db369263aa37f32ce06d7d1b2207d24d.jpg\" style=\"border:0px; box-sizing:border-box; color:rgb(34, 34, 34); font-family:verdana,geneva,sans-serif; font-size:15px; height:auto; max-width:100%; text-align:justify; width:696px\" /></p>\r\n\r\n<p style=\"text-align:center\"><em>Những người h&agrave;nh hương Ấn gi&aacute;o tắm th&aacute;nh b&ecirc;n bờ s&ocirc;ng trong lễ hội Maha Shivaratri tốt l&agrave;nh ở Varanasi, Uttar Pradesh, Ấn Độ</em></p>\r\n\r\n<p style=\"text-align:justify\">Krishna Janmashtami</p>\r\n\r\n<p style=\"text-align:justify\">Lord Krishna c&oacute; một vị tr&iacute; nổi bật trong văn h&oacute;a d&acirc;n gian Hindu. Đ&acirc;y l&agrave; lễ hội kỷ niệm sự ra đời của Krishna, với rất nhiều niềm vui, nhảy m&uacute;a v&agrave; ca h&aacute;t. Sự vui tươi của Krishna Janmashtami thường đi k&egrave;m với c&aacute;c cuộc thi, đ&aacute;ng ch&uacute; &yacute; l&agrave; ph&aacute; vỡ một nồi chứa sữa chua được treo lơ lửng tr&ecirc;n kh&ocirc;ng trung. Mọi người sẽ chen nhau để lấy được nồi đ&oacute;.</p>\r\n\r\n<p><img alt=\"Lễ hội Janmashtami ở Mumbai, Ấn Độ - 03 tháng 9 năm 2018 - Trip14.com\" class=\"td-animation-stack-type0-1\" src=\"https://cdn.trip14.com/trip14.com_85065be3a7ea2178ba7466748c062909.jpg\" style=\"border:0px; box-sizing:border-box; color:rgb(34, 34, 34); font-family:verdana,geneva,sans-serif; font-size:15px; height:auto; max-width:100%; text-align:justify; width:696px\" /></p>\r\n\r\n<p style=\"text-align:center\"><em>Lễ hội Janmashtami ở Mumbai, Ấn Độ - 03 th&aacute;ng 9 năm 2018</em></p>\r\n\r\n<p style=\"text-align:justify\">Makar Sankranti</p>\r\n\r\n<p style=\"text-align:justify\">Trong lịch Hindu, mặt trời đi v&agrave;o phần (Ma Kết) của cung ho&agrave;ng đạo v&agrave;o ng&agrave;y 14 th&aacute;ng 1 h&agrave;ng năm. Surya (thần mặt trời) cũng được t&ocirc;n thờ tr&ecirc;n khắp đất nước với sự s&ugrave;ng k&iacute;nh v&ocirc; song v&agrave;o ng&agrave;y n&agrave;y. Mặc d&ugrave; ng&agrave;y n&agrave;y được biết đến phổ biến l&agrave; Makar Sankranti, danh ph&aacute;p thay đổi theo từng tiểu bang, cũng như c&aacute;c phong tục tương ứng. Tamils ​​gọi n&oacute; l&agrave; Pongal, Assamese ăn mừng v&igrave; Bihu&nbsp;v&agrave; hầu hết người Ấn Độ gọi n&oacute; l&agrave; Lohri. Bất kể t&ecirc;n gọi của n&oacute; l&agrave; g&igrave;, Makar Sankranti l&agrave; một lễ hội được tạo n&ecirc;n độc đ&aacute;o bởi c&aacute;c lễ kỷ niệm của n&oacute;, từ thả diều đến đốt lửa v&agrave; nghi lễ b&ecirc;n bờ s&ocirc;ng.</p>\r\n\r\n<p><img alt=\"Bò tót trong lễ hội sankranti pongal hindu vào ngày 14 tháng 1 năm 2014 tại thành phố Hyderabad, Ấn Độ\" class=\"td-animation-stack-type0-1\" src=\"https://cdn.trip14.com/trip14.com_aac3d8cf236772a744db7d2e2ae05a26.jpg\" style=\"border:0px; box-sizing:border-box; color:rgb(34, 34, 34); font-family:verdana,geneva,sans-serif; font-size:15px; height:auto; max-width:100%; text-align:justify; width:696px\" title=\"Bò tót trong lễ hội sankranti pongal hindu vào ngày 14 tháng 1 năm 2014 tại thành phố Hyderabad, Ấn Độ\" /></p>\r\n\r\n<p style=\"text-align:center\"><em>B&ograve; t&oacute;t trong lễ hội sankranti pongal hindu v&agrave;o ng&agrave;y 14 th&aacute;ng 1 năm 2014 tại th&agrave;nh phố Hyderabad, Ấn Độ .. Ảnh chụp năm 2014. Kh&ocirc;ng r&otilde; ng&agrave;y ch&iacute;nh x&aacute;c.</em></p>\r\n\r\n<p style=\"text-align:justify\">Ganesh Chaturthi</p>\r\n\r\n<p style=\"text-align:justify\">Vị thế của Ganesh Chaturthi l&agrave; một trong những lễ hội phổ biến nhất ở nước n&agrave;y một phần l&agrave; do t&iacute;nh lập dị của n&oacute;, một điều m&agrave; lễ hội chia sẻ với vị thần tương ứng của m&igrave;nh, Lord Ganesh. Ganesh l&agrave; con trai của Ch&uacute;a Shiva, kẻ hủy diệt. Tuy nhi&ecirc;n, Ganesh bất h&ograve;a với cha m&igrave;nh trong niềm tin v&agrave; sự xuất hiện của m&igrave;nh. Khu&ocirc;n mặt của anh ấy giống với một con voi, trong khi t&iacute;nh kh&iacute; d&iacute; dỏm v&agrave; tinh nghịch của anh ấy truyền cảm hứng cho sự tận t&acirc;m từ mọi người ở mọi lứa tuổi. kỷ niệm sự ra đời của Ganesh với việc cầu nguyện ch&iacute;nh thức cho một thần tượng đất s&eacute;t của vị thần. Thần tượng sau đ&oacute; được đắm m&igrave;nh trong một cơ thể của nước giữa những lễ hội xa hơn.</p>\r\n\r\n<p><img alt=\"Đắm chìm Chúa Ganesh tại lễ kỷ niệm lễ hội Ganesh Chaturthi trên bãi biển Girgaum Chowpatty ở Mumbai, Ấn Độ năm 2013 - Trip14.com\" class=\"td-animation-stack-type0-1\" src=\"https://cdn.trip14.com/trip14.com_62916254b3064f7a5a90cf5dcdabe61e.jpg\" style=\"border:0px; box-sizing:border-box; color:rgb(34, 34, 34); font-family:verdana,geneva,sans-serif; font-size:15px; height:auto; max-width:100%; text-align:justify; width:696px\" /></p>\r\n\r\n<p style=\"text-align:center\"><em>Thả Ch&uacute;a Ganesh tại lễ kỷ niệm lễ hội Ganesh Chaturthi tr&ecirc;n b&atilde;i biển Girgaum Chowpatty ở Mumbai, Ấn Độ năm 2013</em></p>\r\n\r\n<div>&nbsp;</div>\r\n', 'https://images.pexels.com/photos/5725206/pexels-photo-5725206.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', '<p style=\"text-align:justify\">Ấn Độ gi&aacute;o l&agrave; một trong những t&ocirc;n gi&aacute;o đa dạng nhất tr&ecirc;n thế giới v&agrave; được biết đến với v&ocirc; số thần thoại v&agrave; c&aacute;c vị thần. Điều đ&oacute; l&yacute; giải tại sao t&ocirc;n gi&aacute;o n&agrave;y c&oacute; rất nhiều lễ hội.</p>\r\n', 'Đặng Minh Tuấn', '2021-03-15 08:57:20', 1);
+INSERT INTO `festival` (`fes_id`, `title`, `religion_id`, `article`, `title_image`, `description`, `author`, `created_at`, `status`) VALUES
+(9, 'Giáng sinh', 4, '<p>Lễ Gi&aacute;ng sinh, c&ograve;n được gọi l&agrave; lễ Thi&ecirc;n Ch&uacute;a gi&aacute;ng sinh, Noel, Christmas hay Xmas (từ tiếng Ph&aacute;p No&euml;l, l&agrave; viết tắt từ gốc Emmanuel, nghĩa l&agrave; &ldquo;Thi&ecirc;n Ch&uacute;a ở c&ugrave;ng ch&uacute;ng ta&rdquo;) l&agrave; một ng&agrave;y lễ kỷ niệm ng&agrave;y Ch&uacute;a Gi&ecirc;-su th&agrave;nh Nazareth sinh ra đời của phần lớn người Cơ Đốc Gi&aacute;o. Họ tin l&agrave; Gi&ecirc;-su được sinh tại Bethlehem thuộc tỉnh Judea của nước Do Th&aacute;i, l&uacute;c bấy giờ đang dưới quyền thống trị của Đế quốc La M&atilde; giữa năm 6 TCN v&agrave; năm 6.</p>\r\n\r\n<p><img alt=\"Nguồn gốc và ý nghĩa của ngày lễ Giáng Sinh (Noel)\" class=\"aligncenter size-full wp-image-93600\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/giang-sinh-e1573523619373.jpg\" style=\"height:400px; width:640px\" title=\"Nguồn gốc và ý nghĩa của ngày lễ Giáng Sinh (Noel)\" /></p>\r\n\r\n<h2>Nguồn gốc v&agrave; &yacute; nghĩa của ng&agrave;y lễ Gi&aacute;ng Sinh (Noel)</h2>\r\n\r\n<p>Một số nước ăn mừng ng&agrave;y n&agrave;y v&agrave;o 25 th&aacute;ng 12, một số nước lại v&agrave;o tối ng&agrave;y 24 th&aacute;ng 12. Theo C&ocirc;ng gi&aacute;o R&ocirc;ma, lễ ch&iacute;nh thức l&agrave; ng&agrave;y 25 th&aacute;ng 12 c&ograve;n gọi l&agrave; &ldquo;lễ ch&iacute;nh ng&agrave;y&rdquo;, c&ograve;n lễ đ&ecirc;m 24 th&aacute;ng 12 gọi l&agrave; &ldquo;lễ vọng&rdquo;. D&ugrave; vậy, lễ đ&ecirc;m 24 th&aacute;ng 12 thường thu h&uacute;t tin đồ tham dự nhiều hơn. Những người theo Ch&iacute;nh Thống gi&aacute;o Đ&ocirc;ng phương vẫn sử dụng lịch Julius để định ng&agrave;y n&agrave;y, cho n&ecirc;n họ tổ chức lễ Gi&aacute;ng sinh v&agrave;o ng&agrave;y 7 th&aacute;ng 1 theo lịch Gregory</p>\r\n\r\n<p><strong>Chữ Christmas gồm c&oacute; chữ Christ v&agrave; Mas.</strong></p>\r\n\r\n<p>Chữ Christ (Đấng chịu sức dầu) l&agrave; tước vị của Đức Gi&ecirc;su. Chữ Mas l&agrave; chữ viết tắt của Mass (th&aacute;nh lễ). Khi chữ Christ v&agrave; Mas viết liền th&agrave;nh ra chữ Christmas. Christmas c&oacute; nghĩa l&agrave; ng&agrave;y lễ của Đấng Christ, tức l&agrave; ng&agrave;y lễ Gi&aacute;ng sinh của Đức Gi&ecirc;su.</p>\r\n\r\n<p>Chữ Christmas v&agrave; Xmas đều c&oacute; c&ugrave;ng một &yacute; nghĩa như nhau. V&igrave; chữ Hy lạp viết chữ Christ l&agrave; Christos,Xpiơt&oacute;s hay Xristos. Người ta d&ugrave;ng phụ &acirc;m X để tượng trưng cho nguy&ecirc;n chữ Xristos hay Xpiơt&oacute;s, rồi th&ecirc;m chữ Mas kế cận để th&agrave;nh chữ Xmas. Như vậy Xmas cũng c&oacute; nghĩa l&agrave; ng&agrave;y lễ của đấng Christ.</p>\r\n\r\n<p><img alt=\"Nguồn gốc và ý nghĩa của ngày lễ Giáng Sinh (Noel)\" class=\"aligncenter size-full wp-image-93601\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/no-el-e1573523737660.jpg\" style=\"height:360px; width:640px\" title=\"Nguồn gốc và ý nghĩa của ngày lễ Giáng Sinh (Noel)\" /></p>\r\n\r\n<p>Thời kỳ Gi&aacute;o hội cơ đốc sơ khai (2,3 thế kỷ đầu c&ocirc;ng nguy&ecirc;n), lễ n&agrave;y được mừng chung với lễ Hiễn linh. Tuy nhi&ecirc;n ngay từ năm 200, th&aacute;nh Clement&ecirc; Alexandria (150-215) đ&atilde; n&oacute;i đến một lễ hết sức đặc biệt được cử h&agrave;nh v&agrave;o ng&agrave;y 20 th&aacute;ng 5. C&ograve;n Hội th&aacute;nh La tinh th&igrave; mừng k&iacute;nh lễ ấy v&agrave;o ng&agrave;y 25 th&aacute;ng 12.Theo một nguồn kh&aacute;c th&igrave; t&iacute;n hữu cơ đốc sơ khai kh&ocirc;ng ăn mừng lễ sinh nhật, v&igrave; họ cho rằng ăn mừng sinh nhật l&agrave; l&agrave;m theo th&oacute;i quen của d&acirc;n ngoại đạo thờ thần tượng. Bởi lẽ đ&oacute; họ kh&ocirc;ng ăn mừng lễ gi&aacute;ng sinh của Đức Jesus trong suốt ba thế kỷ đầu. Đến thế kỷ IV, những người Cơ đốc mới bắt đầu muốn ăn mừng Lễ gi&aacute;ng sinh của Đức Jesus mỗi năm một lần, nhưng lại sợ bị ch&iacute;nh quyền La M&atilde; ph&aacute;t hiện v&agrave; bắt bớ bởi v&igrave; đến l&uacute;c đ&oacute;, cơ đốc gi&aacute;o vẫn chưa được c&ocirc;ng nhận l&agrave; một t&ocirc;n gi&aacute;o hợp ph&aacute;p.</p>\r\n\r\n<p>Những người La M&atilde;, h&agrave;ng năm ăn mưng &ldquo;Thần Mặt trời&rdquo; đem &aacute;nh s&aacute;ng đến cho trần gian v&agrave;o ng&agrave;y 25 th&aacute;ng 12. Những người cơ đốc đ&atilde; lợi dụng cơ hội n&agrave;y để tổ chức ăn mừng ng&agrave;y Đức Gi&ecirc;su gi&aacute;ng sinh v&agrave;o đem &aacute;nh s&aacute;ng v&agrave; sự sống đến cho nh&acirc;n loại c&ugrave;ng một ng&agrave;y với ng&agrave;y lễ &ldquo;Thần Mặt trời&rdquo; của người La M&atilde;. Nhờ vậy, ch&iacute;nh quyền đ&atilde; kh&ocirc;ng ph&aacute;t hiện việc c&aacute;c t&iacute;n hữu cơ đốc tổ chức ăn mừng Lễ gi&aacute;ng sinh của Đức Gi&ecirc;su.</p>\r\n\r\n<p><img alt=\"Nguồn gốc và ý nghĩa của ngày lễ Giáng Sinh (Noel)\" class=\"aligncenter size-full wp-image-93602\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/chua-jesu-e1573523819590.jpg\" style=\"height:434px; width:640px\" title=\"Nguồn gốc và ý nghĩa của ngày lễ Giáng Sinh (Noel)\" /></p>\r\n\r\n<p>Đến năm 312, Ho&agrave;ng đế La M&atilde; Constantine đ&atilde; bỏ đa thần gi&aacute;o v&agrave; theo cơ đốc. &Ocirc;ng n&agrave;y đ&atilde; hủy bỏ ng&agrave;y lễ ăn mừng &ldquo;Thần Mặt trời&rdquo; v&agrave; thay v&agrave;o đ&oacute; l&agrave; ng&agrave;y ăn mừng sinh nhật của Đức Jesus. Đến năm 354, Gi&aacute;o ho&agrave;ng Liberius c&ocirc;ng bố ng&agrave;y 25 th&aacute;ng 12 l&agrave; ng&agrave;y ch&iacute;nh thức để cử h&agrave;nh lễ Gi&aacute;ng sinh của Đức Jesus.</p>\r\n\r\n<p>Trong nhiều thề kỷ, những nh&agrave; ghi ch&eacute;p Ki-t&ocirc; gi&aacute;o chấp nhận Gi&aacute;ng sinh l&agrave; ng&agrave;y Jesus được sinh ra đời. Tuy nhi&ecirc;n, đến đầu thế kỷ 18, c&aacute;c học giả bắt đầu đề xuất một c&aacute;ch giải th&iacute;ch kh&aacute;c. Isaac Newton cho rằng ng&agrave;y Gi&aacute;ng sinh đ&atilde; được lựa chọn để tương ứng với đ&ocirc;ng ch&iacute; ở Bắc b&aacute;n cầu, từng được đ&aacute;nh dấu l&agrave; ng&agrave;y 25 th&aacute;ng 12. Năm 1743, Paul Ernst Jablonski người Đức lập luận ng&agrave;y Gi&aacute;ng sinh được x&aacute;c định ng&agrave;y 25 th&aacute;ng 12 để khớp với ng&agrave;y Sol Invictus trong t&ocirc;n gi&aacute;o La M&atilde; cổ. Ngo&agrave;i ra trước người Kit&ocirc; gi&aacute;o, nhiều nền văn h&oacute;a v&agrave; t&ocirc;n gi&aacute;o kh&aacute;c cũng ăn mừng ng&agrave;y lễ cuối th&aacute;ng 12.</p>\r\n\r\n<h2>&Yacute; nghĩa từ &ldquo;Merry Christmas&rdquo;</h2>\r\n\r\n<p>Bản th&acirc;n từ &ldquo;Merry&rdquo; đ&atilde; gieo v&agrave;o l&ograve;ng ch&uacute;ng ta một niềm h&acirc;n hoan, cảm gi&aacute;c ấm &aacute;p hạnh ph&uacute;c v&igrave; n&oacute; gắn liền với dịp lễ Gi&aacute;ng sinh. Mặc d&ugrave; c&aacute;c hoạt động tổ chức lễ Gi&aacute;ng sinh đ&atilde; bắt đầu từ thế kỷ thứ IV sau c&ocirc;ng nguy&ecirc;n, nhưng chỉ đến năm 1699, th&igrave; c&aacute;ch n&oacute;i &ldquo;Merry Christmas&rdquo; mới được sử dụng.</p>\r\n\r\n<p>Người c&oacute; c&ocirc;ng rất lớn trong nguồn gốc của cụm từ n&agrave;y l&agrave; một sỹ quan hải qu&acirc;n v&igrave; &ocirc;ng đ&atilde; sử dụng từ n&agrave;y lần đầu ti&ecirc;n trong một bức thư th&acirc;n mật v&agrave;o năm 1699. Cụm từ n&agrave;y xuất hiện lần thứ hai v&agrave;o năm 1843 trong một t&aacute;c phẩm của Charles Dickens &ldquo;B&agrave;i h&aacute;t đ&oacute;n mừng lễ Gi&aacute;ng sinh&rdquo;.</p>\r\n\r\n<p>Trong dịp lễ gi&aacute;ng sinh, kh&ocirc;ng chỉ c&oacute; đạo Thi&ecirc;n ch&uacute;a m&agrave; hầu như tất cả mọi người d&ugrave; ở c&aacute;c giai tầng hay t&ocirc;n gi&aacute;o kh&aacute;c nhau cũng đều gửi đến nhau lời ch&uacute;c &ldquo;Merry Christmas&rdquo;. Trong cụm từ Merry Christmas, &ldquo;Merry&rdquo; c&oacute; nghĩa l&agrave; niềm vui c&ograve;n &ldquo;Christmas&rdquo; c&oacute; nghĩa l&agrave; c&aacute;c con chi&ecirc;n của ch&uacute;a (c&aacute;ch d&ugrave;ng trong tiếng Anh cổ). Nhiều người sử dụng từ &ldquo;Happy&rdquo; thay cho &ldquo;Merry&rdquo; để ch&uacute;c nhau trong dịp gi&aacute;ng sinh. Cụm từ &ldquo;Happy Christmas&rdquo; trở n&ecirc;n phổ biến tr&ecirc;n to&agrave;n thế giới v&agrave;o thế kỷ XIX, khi n&oacute; được sử dụng bởi ch&iacute;nh nữ ho&agrave;ng Anh Elizabeth II.</p>\r\n\r\n<p><img alt=\"\" class=\"aligncenter size-full wp-image-93603\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/Merry-Christmas-e1573523919958.jpg\" style=\"height:360px; width:640px\" /></p>\r\n\r\n<p>Trong t&aacute;c phẩm gốc được viết v&agrave;o năm 1823 của nh&agrave; thơ Mỹ Clement Moore, &ldquo;Chuyến viếng thăm th&aacute;nh Nicholas&rdquo;, c&acirc;u kết luận vốn l&agrave; &ldquo;Happy Christmas to all, and to all a good night&rdquo; đ&atilde; được đổi lại th&agrave;nh &ldquo;Merry Christmas to all&rdquo; trong nhiều ấn phẩm t&aacute;i bản về sau.</p>\r\n\r\n<p>Ng&agrave;y nay, c&aacute;ch n&oacute;i &ldquo;Happy Christmas&rdquo; chỉ chủ yếu được sử dụng bởi c&aacute;c cư d&acirc;n Ireland v&agrave; Anh. Đ&ocirc;i khi để r&uacute;t gọn, nhiều người c&ograve;n sử dụng từ Xmas thay cho Christmas. Tuy nhi&ecirc;n phải khẳng định rằng, kh&ocirc;ng cụm từ hay c&aacute;ch n&oacute;i n&agrave;o c&oacute; thể phổ biến bằng cụm từ &ldquo;Merry Christmas&rdquo;. Ch&uacute;c bạn c&oacute; một m&ugrave;a Gi&aacute;ng sinh vui vẻ v&agrave; hạnh ph&uacute;c!</p>\r\n\r\n<h2>Biểu tượng Gi&aacute;ng sinh v&agrave; &yacute; nghĩa</h2>\r\n\r\n<h3>V&ograve;ng l&aacute; m&ugrave;a vọng</h3>\r\n\r\n<p><img alt=\"Vòng lá mùa vọng\" class=\"aligncenter size-full wp-image-93604\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/vong-la-giang-sinh.jpeg\" style=\"height:479px; width:640px\" title=\"Vòng lá mùa vọng\" /></p>\r\n\r\n<p>V&ograve;ng l&aacute; m&ugrave;a vọng l&agrave; v&ograve;ng tr&ograve;n kết bằng c&agrave;nh l&aacute; xanh thường được đặt tr&ecirc;n b&agrave;n hay treo l&ecirc;n cao để mọi người tr&ocirc;ng thấy. C&acirc;y xanh thường được trang ho&agrave;ng trong c&aacute;c bữa tiệc của dịp Đ&ocirc;ng ch&iacute; &ndash; dấu hiệu của m&ugrave;a đ&ocirc;ng sắp kết th&uacute;c. Tr&ecirc;n v&ograve;ng l&aacute; đặt 4 c&acirc;y nến. Tục lệ n&agrave;y khởi xướng bởi c&aacute;c t&iacute;n hữu Ph&aacute;o Lutheran ở Đức v&agrave;o thế kỷ 16 để n&oacute;i l&ecirc;n sự giao tranh giữa &aacute;nh s&aacute;ng v&agrave; b&oacute;ng tối.</p>\r\n\r\n<p>V&ograve;ng l&aacute; c&oacute; h&igrave;nh tr&ograve;n n&oacute;i l&ecirc;n t&iacute;nh c&aacute;ch vĩnh hằng v&agrave; t&igrave;nh y&ecirc;u thương v&ocirc; tận của Thi&ecirc;n Ch&uacute;a. M&agrave;u xanh l&aacute; n&oacute;i l&ecirc;n hi vọng rằng Đấng Cứu Thế sẽ đến cứu con người. 4 c&acirc;y nến bao gồm ba c&acirc;y m&agrave;u t&iacute;m &ndash; m&agrave;u của M&ugrave;a Vọng, c&acirc;y thứ 4 l&agrave; m&agrave;u hồng, l&agrave; m&agrave;u của Ch&uacute;a Nhật thứ Ba m&ugrave;a Vọng, hay c&ograve;n gọi l&agrave; Ch&uacute;a Nhật Vui mừng (Gaudete Sunday).</p>\r\n\r\n<h3>Thiệp Gi&aacute;ng sinh</h3>\r\n\r\n<p><img alt=\"Thiệp giáng sinh\" class=\"aligncenter size-full wp-image-93605\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/thiep-giang-sinh-2017-4005a3a71ba61808.jpg\" style=\"height:300px; width:400px\" title=\"Thiệp giáng sinh\" /></p>\r\n\r\n<p>Bắt nguồn từ năm 1843 khi &ocirc;ng Henry Cole, một thương gia gi&agrave;u c&oacute; nước Anh, đ&atilde; nhờ Horsley, một họa sỹ ở London, thiết kế một tấm thiệp thật đẹp để tặng bạn b&egrave;. V&agrave;o Noel năm đ&oacute;, Horsley tr&igrave;nh l&agrave;ng tấm thiệp đầu ti&ecirc;n tr&ecirc;n thế giới v&agrave; sau đ&oacute; n&oacute; đ&atilde; in ra 1000 bản. Thiệp Gi&aacute;ng sinh nhanh ch&oacute;ng b&ugrave;ng ph&aacute;t v&agrave; trở th&agrave;nh mốt thịnh h&agrave;nh ở Anh trong suốt 10 năm kể từ khi Ch&iacute;nh phủ Anh th&ocirc;ng qua đạo luật năm 1846 cho ph&eacute;p bất k&igrave; người d&acirc;n n&agrave;o gửi thư đến bất kỳ nơi n&agrave;o với gi&aacute; rẻ. Kh&ocirc;ng l&acirc;u sau, tr&agrave;o lưu n&agrave;y du nhập sang Đức v&agrave; tới 30 năm sau người Mỹ mới chấp nhận n&oacute;.</p>\r\n\r\n<h3>Qu&agrave; Gi&aacute;ng sinh</h3>\r\n\r\n<p><img alt=\"Quà giáng sinh\" class=\"aligncenter size-full wp-image-93606\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/qua-giang-sinh-e1573524110637.jpg\" style=\"height:480px; width:640px\" title=\"Quà giáng sinh\" /></p>\r\n\r\n<p>Những m&oacute;n qu&agrave; biểu lộ t&igrave;nh y&ecirc;u của mọi người với gia đ&igrave;nh v&agrave; bạn b&egrave;. Đối với một số người, những m&oacute;n qu&agrave; Gi&aacute;ng sinh c&ograve;n c&oacute; một &yacute; nghĩa t&iacute;n ngưỡng s&acirc;u sắc. Đ&oacute; l&agrave; lễ kỷ niệm ng&agrave;y sinh của Ch&uacute;a Gi&ecirc;-su, m&oacute;n qu&agrave; m&agrave; Thi&ecirc;n Ch&uacute;a đ&atilde; ban tặng cho con người.</p>\r\n\r\n<p>Khi Ch&uacute;a Gi&ecirc;-su cất tiếng kh&oacute;c ch&agrave;o đời tại Bethlehem trong một c&aacute;i m&aacute;ng cỏ, ba vị vua phương Đ&ocirc;ng đ&atilde; đến để b&agrave;y tỏ sự th&agrave;nh k&iacute;nh của m&igrave;nh. Họ mang đến ba m&oacute;n qu&agrave; qu&yacute; gi&aacute;, đ&oacute; l&agrave; v&agrave;ng, trầm hương v&agrave; mộc dược. V&agrave;ng tượng trưng Ch&uacute;a Gi&ecirc;su l&agrave; vua ( tức con Ch&uacute;a Cha &ndash; Vua Nước Trời), trầm hương tượng trưng Gi&ecirc;-su l&agrave; Thi&ecirc;n Ch&uacute;a v&agrave; mộc dược biểu hiện h&igrave;nh ảnh Gi&ecirc;-su bị đ&oacute;ng đinh tr&ecirc;n c&acirc;y th&aacute;nh gi&aacute; hay n&oacute;i r&otilde; hơn l&agrave; sự chịu chết của Ch&uacute;a Gi&ecirc;su để cứu chuộc nh&acirc;n loại.</p>\r\n\r\n<p>Ba vị vua rất gi&agrave;u c&oacute; nhưng những người d&acirc;n ngh&egrave;o hầu như chẳng c&oacute; t&agrave;i sản cũng mang đến bất cứ những g&igrave; họ c&oacute; thể để tỏ l&ograve;ng th&agrave;nh k&iacute;nh với Ch&uacute;a H&agrave;i đồng. Những người chăn cừu tặng Gi&ecirc;-su hoa quả v&agrave; những m&oacute;n đồ chơi nhỏ do ch&iacute;nh họ tạo ra.</p>\r\n\r\n<p>&Ocirc;ng gi&agrave; N&ocirc;-en thường cưỡi xe tuần lộc tr&ecirc;n trời, đến nh&agrave; c&oacute; c&acirc;y th&ocirc;ng gi&aacute;ng sinh v&agrave; leo qua ống kh&oacute;i để đem đến những m&oacute;n qu&agrave; cho c&aacute;c em nhỏ đang ngủ v&agrave; thường để qu&agrave; trong những chiếc tất.</p>\r\n\r\n<p>Nguồn gốc d&ugrave;ng hang đ&aacute; v&agrave; m&aacute;ng cỏ trong lễ Gi&aacute;ng Sinh l&agrave; do truyền thuyết Ch&uacute;a sinh ra đời trong một hang đ&aacute; nhỏ, nơi m&aacute;ng cỏ của c&aacute;c mục đồng chăn chi&ecirc;n tại th&agrave;nh Bethelem.</p>\r\n\r\n<h3>Hang đ&aacute; v&agrave; m&aacute;ng cỏ</h3>\r\n\r\n<p><img alt=\"Hang đá và máng cỏ \" class=\"aligncenter size-full wp-image-93607\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/hang-da-noel-e1573524189382.jpg\" style=\"height:427px; width:640px\" title=\"Hang đá và máng cỏ \" /></p>\r\n\r\n<p>Ng&agrave;y nay, v&agrave;o đ&ecirc;m 24-12 tại c&aacute;c gi&aacute;o đường đều c&oacute; hang đ&aacute; với m&aacute;ng cỏ, b&ecirc;n trong c&oacute; tượng Ch&uacute;a H&agrave;i đồng, tượng Đức mẹ Maria, chung quanh c&oacute; những con lừa, tượng Ba Vua, một số thi&ecirc;n thần, Th&aacute;nh Giuse tr&ecirc;n m&aacute;i nh&agrave; c&oacute; &aacute;nh s&aacute;ng, chiếu từ một ng&ocirc;i sao hướng dẫn ba vua t&igrave;m đến với Ch&uacute;a. Mọi người đều hướng về Ch&uacute;a nh&acirc;n từ, cầu nguyện Ch&uacute;a cứu rỗi cho nh&acirc;n loại tr&aacute;nh khỏi chiến tranh, ngh&egrave;o đ&oacute;i v&agrave; bất hạnh.</p>\r\n\r\n<h3>C&acirc;y th&ocirc;ng NOEL</h3>\r\n\r\n<p><img alt=\"Cây thông NOEL \" class=\"aligncenter size-full wp-image-93608\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/Juletræet.jpg\" style=\"height:600px; width:436px\" title=\"Cây thông NOEL \" /></p>\r\n\r\n<p>C&acirc;y th&ocirc;ng Noel c&oacute; nguồn gốc từ nước &ETH;ức từ thế kỷ 16. Đ&acirc;y l&agrave; loại c&acirc;y sống trong kh&iacute; hậu khắc nghiệt nhưng vẫn giữ được d&aacute;ng vẻ mạnh mẽ, vững ch&atilde;i v&agrave; m&agrave;u xanh vĩnh cửu. Dần dần h&igrave;nh ảnh của lo&agrave;i c&acirc;y n&agrave;y xuất hiện thường xuy&ecirc;n hơn v&agrave; n&oacute; được coi l&agrave; trung t&acirc;m của lễ hội, nơi mọi người c&ugrave;ng nắm tay nhau nhảy m&uacute;a xung quanh c&acirc;y th&ocirc;ng được trang tr&iacute; c&ocirc;ng phu cả b&ecirc;n trong v&agrave; b&ecirc;n ngo&agrave;i bằng hoa hồng, t&aacute;o v&agrave; giấy m&agrave;u.Đến thế kỉ 19 th&igrave; c&acirc;y Noel bắt đầu được sử dụng rộng r&atilde;i ở Anh. Đến những năm 1820 c&acirc;y Noel được những người &ETH;ức ở Pennsylvania mang sang nước Mỹ.Ng&agrave;y nay, gần đến dịp Noel, người ta thường sắm một c&acirc;y th&ocirc;ng v&agrave; trang tr&iacute; l&ecirc;n đ&oacute; những ng&ocirc;i sao, những quả ch&acirc;u, dải kim tuyến lấp l&aacute;nh, hoa&hellip; C&acirc;y th&ocirc;ng được xem l&agrave; biểu tượng của niềm hy vọng v&agrave; sức sống mới trong lễ hội đ&oacute;n ch&agrave;o năm mới.</p>\r\n\r\n<h3>Qu&agrave; tặng trong những chiếc b&iacute;t tất</h3>\r\n\r\n<p><img alt=\"Quà tặng trong những chiếc bít tất\" class=\"aligncenter size-full wp-image-93609\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/qua-tang-bit-tat-e1573524359660.jpg\" style=\"height:640px; width:640px\" title=\"Quà tặng trong những chiếc bít tất\" /></p>\r\n\r\n<p>Tương truyền rằng, nh&agrave; kia c&oacute; 3 c&ocirc; g&aacute;i đến tuổi lập gia đ&igrave;nh nhưng kh&ocirc;ng c&oacute; ch&agrave;ng trai n&agrave;o nh&ograve;m ng&oacute; đến v&igrave; gia cảnh qu&aacute; ngh&egrave;o. Đức gi&aacute;m mục Myra rất thương x&oacute;t n&ecirc;n đ&atilde; n&eacute;m những đồng tiền v&agrave;ng xuống ống kh&oacute;i nh&agrave; của 3 c&ocirc; g&aacute;i. Những đồng tiền v&agrave;ng rơi từ tr&ecirc;n n&oacute;c nh&agrave; xuống đ&uacute;ng c&aacute;c đ&ocirc;i b&iacute;t tất m&agrave; c&aacute;c c&ocirc; treo hong b&ecirc;n l&ograve; sưởi. Khỏi phải n&oacute;i cũng biết rằng c&aacute;c c&ocirc; vui mừng đến mức n&agrave;o. Họ đ&atilde; c&oacute; cơ hội để thực hiện nguyện ước của m&igrave;nh.</p>\r\n\r\n<p>C&acirc;u truyện thần kỳ kia được lan truyền đi khắp nơi, ai ai cũng muốn m&igrave;nh trở th&agrave;nh người may mắn n&ecirc;n đều bắt chước 3 c&ocirc; g&aacute;i treo b&iacute;t tất b&ecirc;n l&ograve; sưởi dể hy vọng nhận được qu&agrave;.</p>\r\n\r\n<p>Trẻ em hy vọng nhận được nhiều qu&agrave; nhất. Mọi người trong nh&agrave; cũng nh&acirc;n cơ hội n&agrave;y để tặng qu&agrave; cho c&aacute;c em với mong muốn l&agrave; c&aacute;c em sẽ ngoan ngo&atilde;n v&agrave; học giỏi. Từ đ&oacute; c&oacute; tục trẻ em treo b&iacute;t tất b&ecirc;n cạnh l&ograve; sưởi dể nhận qu&agrave; như ước mơ từ &ocirc;ng gi&agrave; Noel.</p>\r\n\r\n<h3>Ng&ocirc;i sao Gi&aacute;ng Sinh</h3>\r\n\r\n<p><img alt=\"Ngôi sao Giáng Sinh \" class=\"aligncenter size-full wp-image-93610\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/ngoi-sao-nen_1000x562-e1573524448859.jpg\" style=\"height:360px; width:640px\" title=\"Ngôi sao Giáng Sinh \" /></p>\r\n\r\n<p>Ng&ocirc;i sao 5 c&aacute;nh thường xuất hiện rưc rỡ đủ m&agrave;u sắc trong m&ugrave;a Gi&aacute;ng sinh. Một ng&ocirc;i sao to lớn được treo ở chỗ cao nhất của th&aacute;p chu&ocirc;ng nh&agrave; thờ. Từ đ&oacute; căng giấy ra bốn ph&iacute;a,c&oacute; nhiều ng&ocirc;i sao nhỏ, treo đ&egrave;n lồng v&agrave; kết hoa rất đẹp mắt.</p>\r\n\r\n<p>Ng&ocirc;i sao trong lễ Gi&aacute;ng sinh co &yacute; nghĩa đặc biệt, theo tương truyền l&uacute;c Ch&uacute;a vừa ch&agrave;o đời th&igrave; xuất hiện một ng&ocirc;i sao rực rỡ. &Aacute;nh s&aacute;ng tỏa ra mấy trăm dặm c&ograve;n nh&igrave;n thấy. Từ c&aacute;c v&ugrave;ng ph&iacute;a đ&ocirc;ng xa x&ocirc;i nay thuộc l&atilde;nh thổ Iran va Syria, c&oacute; 3 vị vua được mặc khải tin rằng cứ lần theo &aacute;nh s&aacute;ng ng&ocirc;i sao t&igrave;m tới chắc chắn sẽ gặp ph&eacute;p lạ gọi l&agrave; lễ ba vua.</p>\r\n\r\n<p>Từ đ&oacute;, 3 vị t&igrave;m theo sự dẫn đường của &aacute;nh s&aacute;ng để đến được th&agrave;nh Bethelem nơi Ch&uacute;a đ&atilde; ra đời. Ba vị n&agrave;y th&acirc;n quỳ trước mặt Ch&uacute;a, d&acirc;ng l&ecirc;n Ch&uacute;a c&aacute;c vật phẩm trầm hương v&agrave; v&agrave;ng bạc ch&acirc;u b&aacute;u.</p>\r\n\r\n<p>Ng&ocirc;i sao trở th&agrave;nh biểu tượng &yacute; nghĩa trong m&ugrave;a Gi&aacute;ng sinh v&agrave; được treo chỗ sang trọng nhất ở c&aacute;c gi&aacute;o đường, cơ sở t&ocirc;n gi&aacute;o trong đem Gi&aacute;ng sinh để nhớ đến sự t&iacute;ch tr&ecirc;n. Do &yacute; nghĩa ng&ocirc;i sao c&ograve;n tượng trưng cho ph&eacute;p lạ của Thượng đế.</p>\r\n\r\n<h3>&Ocirc;ng gi&agrave; Noel</h3>\r\n\r\n<p><img alt=\"Ông già Noel \" class=\"aligncenter size-full wp-image-93611\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/ong-gia-noel.jpg\" style=\"height:366px; width:650px\" title=\"Ông già Noel \" /></p>\r\n\r\n<p>Nguồn gốc của từ &ldquo;&ocirc;ng gi&agrave; Noel&rdquo; (Santa Claus) hay th&aacute;nh Nicholas bắt đầu ở Thổ Nhĩ K&igrave; từ thế kỉ thứ IV. Từ l&uacute;c c&ograve;n nhỏ th&aacute;nh đ&atilde; l&agrave; một người rất ngoan đạo v&agrave; đ&atilde; hiến cả cuộc đời của m&igrave;nh cho đạo Cơ &ETH;ốc.</p>\r\n\r\n<p>Th&aacute;nh Nicholas đặc biệt được ca tụng v&igrave; t&igrave;nh y&ecirc;u đối với trẻ em v&agrave; sự h&agrave;o ph&oacute;ng của ng&agrave;i.Th&aacute;nh Nicholas l&agrave; người bảo trợ cho c&aacute;c thuỷ thủ, đảo Xi-xin-li, nước Hy Lạp v&agrave; nước Nga v&agrave; tất nhi&ecirc;n th&aacute;nh cũng l&agrave; người bảo trợ của trẻ em.V&agrave;o thế kỉ thứ 16, ở H&agrave; Lan trẻ em thường đặt những chiếc giầy gỗ của m&igrave;nh b&ecirc;n cạnh l&ograve; sưởi với hy vọng l&agrave; ch&uacute;ng sẽ được th&aacute;nh Nicholas thết đ&atilde;i no n&ecirc;.</p>\r\n\r\n<p>Người H&agrave; Lan ph&aacute;t &acirc;m từ St. Nicholas th&agrave;nh Sint Nicholaas, sau đ&oacute; n&oacute;i chệch th&agrave;nh Sinterklaas v&agrave; cuối c&ugrave;ng được những người theo gi&aacute;o ph&aacute;i Anh đọc th&agrave;nh Santa Claus.</p>\r\n\r\n<p>Năm 1882, Cl&ecirc;-mơn C.Mo-rơ đ&atilde; viết b&agrave;i h&aacute;t nổi tiếng của m&igrave;nh &ldquo;A visit from St. Nick&rdquo; (chuyến thăm của th&aacute;nh Nick) v&agrave; sau đ&oacute; được xuất bản với c&aacute;i t&ecirc;n &ldquo;The night before Christmas&rdquo; (&ETH;&ecirc;m trước Gi&aacute;ng Sinh). Mo-rơ được coi l&agrave; người đ&atilde; hiện đại h&oacute;a h&igrave;nh tượng &ocirc;ng gi&agrave; Noel bằng h&igrave;nh ảnh một &ocirc;ng gi&agrave; to b&eacute;o, vui t&iacute;nh trong bộ đồ m&agrave;u đỏ.</p>\r\n\r\n<h3>Bộ quần &aacute;o đỏ của &ocirc;ng gi&agrave; Noel</h3>\r\n\r\n<p><img alt=\"Bộ quần áo đỏ của ông già Noel \" class=\"aligncenter size-full wp-image-93612\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/ong_gia_noel_upmv.jpg\" style=\"height:459px; width:653px\" title=\"Bộ quần áo đỏ của ông già Noel \" /></p>\r\n\r\n<p>&Ocirc;ng gi&agrave; tuyết chưa trở th&agrave;nh &ocirc;ng gi&agrave; tuyết, v&igrave; &ocirc;ng vẫn mặc bộ quần &aacute;o tiều phu cũ kỹ, cưỡi ngựa mỗi khi đến cho qu&agrave; bọn trẻ. Một ng&agrave;y nọ, &ocirc;ng địa chủ l&agrave;ng Nicholas đi ngang qua nh&agrave; &ocirc;ng, v&agrave; lập tức Nicholas bị m&ecirc; hoặc bởi chiếc xe k&eacute;o với hai con tuần lộc xinh đẹp, xe c&oacute; gắn những c&aacute;i chu&ocirc;ng k&ecirc;u lanh canh dễ thương. &Ocirc;ng địa chủ mặc một bộ đồ đỏ tươi, đầu đội mũ l&ocirc;ng c&ugrave;ng m&agrave;u. &ldquo;M&igrave;nh cũng đ&aacute;ng để c&oacute; n&oacute; lắm chứ, con ngựa nh&agrave; m&igrave;nh đ&atilde; qu&aacute; gi&agrave; v&agrave; hay than thở, c&ograve;n bộ quần &aacute;o n&agrave;y th&igrave; kh&ocirc;ng chịu nổi c&aacute;i gi&aacute; r&eacute;t m&ugrave;a đ&ocirc;ng nữa&rdquo;.</p>\r\n\r\n<p>Nicholas t&igrave;m đến b&agrave; thợ may giỏi nhất v&ugrave;ng để c&oacute; bộ đồ đỏ mơ ước ấy. Nhưng lạ l&ugrave;ng thay, khi bộ đồ ho&agrave;n th&agrave;nh th&igrave; n&oacute; to đến độ tr&ocirc;ng Nicholas như lọt thỏm v&agrave;o trong ấy &ldquo;&Ocirc;i t&ocirc;i đ&atilde; l&agrave;m hỏng bộ đồ của &ocirc;ng rồi, n&oacute; mới th&ugrave;ng th&igrave;nh l&agrave;m sao!&ldquo;. &rdquo;Kh&ocirc;ng sao cả, t&ocirc;i sẽ ăn b&aacute;nh kẹo cho người to l&ecirc;n như bộ quần &aacute;o. C&aacute;i quần d&agrave;i n&agrave;y ư? T&ocirc;i sẽ mang một đ&ocirc;i ủng đen để bớt độ l&ugrave;ng x&ugrave;ng. B&agrave; cứ y&ecirc;n t&acirc;m, tr&ocirc;ng t&ocirc;i sẽ tuyệt vời trong bộ quần &aacute;o n&agrave;y đấy!&rdquo;.</p>\r\n\r\n<p>V&agrave; như thế, &ocirc;ng gi&agrave; Noel đ&atilde; ra đời như một huyền thoại, nhưng đến mấy mươi năm sau, th&igrave; bộ trang phục đỏ gắn liền với huyền thoại ấy mới c&oacute;.</p>\r\n\r\n<p>C&ograve;n b&acirc;y giờ, h&atilde;y tự tin m&agrave; bảo với với mọi người rằng: &ldquo;&Ocirc;ng gi&agrave; Noel tr&ecirc;n xe trượt tuyết với hai con tuần lộc l&agrave; ho&agrave;n to&agrave;n c&oacute; thật&rdquo;.</p>\r\n\r\n<h3>C&acirc;y tầm gửi v&agrave; c&acirc;y &ocirc; r&ocirc;</h3>\r\n\r\n<p><img alt=\"Cây tầm gửi\" class=\"aligncenter size-full wp-image-93613\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/cay-tam-gui.jpg\" style=\"height:375px; width:500px\" title=\"Cây tầm gửi\" /></p>\r\n\r\n<p>Hai trăm năm trước khi Ch&uacute;a Gi&ecirc; su ra đời, người ngoại đạo d&ugrave;ng c&acirc;y tầm gửi để kỉ niệm ng&agrave;y M&ugrave;a &ETH;&ocirc;ng đến. Họ thường h&aacute;i loại c&acirc;y k&iacute; gửi n&agrave;y v&agrave; d&ugrave;ng n&oacute; để trang tr&iacute; cho ng&ocirc;i nh&agrave; của m&igrave;nh. Họ tin tưởng rằng loại c&acirc;y n&agrave;y c&oacute; một khả năng chữa trị đặc biệt đối với mọi loại bệnh tật từ bệnh v&ocirc; sinh của phụ nữ cho đến ngộ độc thức ăn.Những người d&acirc;n ở b&aacute;n đảo Xcăngđinavi cũng coi c&acirc;y tầm gửi l&agrave; biểu tượng của ho&agrave; b&igrave;nh v&agrave; sự h&ograve;a thuận. Họ c&ograve;n đồng nhất h&igrave;nh tượng c&acirc;y tầm gửi với nữ thần t&igrave;nh y&ecirc;u của họ l&agrave; thần Frigga. Phong tục h&ocirc;n nhau dưới b&oacute;ng c&acirc;y tầm gửi hẳn l&agrave; xuất ph&aacute;t từ từ niềm tin n&agrave;y.L&uacute;c đầu nh&agrave; thờ cấm sử dụng c&acirc;y tầm gửi trong lễ Gi&aacute;ng Sinh v&igrave; nguồn gốc ngoại đạo của n&oacute;. Thay v&igrave; sử dụng tầm gửi, c&aacute;c cha đạo đề nghị d&ugrave;ng c&acirc;y &ocirc; r&ocirc; l&agrave;m loại c&acirc;y d&ugrave;ng cho Lễ Gi&aacute;ng Sinh.</p>\r\n\r\n<h3>C&acirc;y trạng nguy&ecirc;n (Poinsettias)</h3>\r\n\r\n<p><img alt=\"Cây trạng nguyên (Poinsettias)\" class=\"aligncenter size-full wp-image-93614\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/poinsettia-red-christmas-table-1569782476.jpg\" style=\"height:480px; width:480px\" title=\"Cây trạng nguyên (Poinsettias)\" /></p>\r\n\r\n<p>C&acirc;y trạng nguy&ecirc;n được đặt theo t&ecirc;n của Joel Poinsett đại sứ đầu ti&ecirc;n của Mĩ ở M&ecirc;-hi-c&ocirc; người đ&atilde; c&oacute; c&ocirc;ng mang loại c&acirc;y n&agrave;y về nước Mỹ v&agrave;o năm 1882.Qu&ecirc; hương của c&acirc;y trạng nguy&ecirc;n l&agrave; ở M&ecirc;-hi-c&ocirc;. V&agrave;o thế kỉ 18, người M&ecirc;-hi-c&ocirc; coi c&acirc;y trạng nguy&ecirc;n l&agrave; biểu tượng của ng&ocirc;i sao ở Bethelem. Theo truyền thuyết cho rằng c&oacute; một b&eacute; trai kh&ocirc;ng c&oacute; qu&agrave; d&acirc;ng l&ecirc;n Ch&uacute;a H&agrave;i Đồng n&ecirc;n em đ&atilde; mang đến m&aacute;ng cỏ một ch&ugrave;m l&aacute; c&acirc;y. C&aacute;c bạn em cười chế nhạo em, nhưng khi em đặt những nh&aacute;nh l&aacute; dưới ch&acirc;n Ch&uacute;a H&agrave;i Đồng th&igrave; những c&agrave;nh l&aacute; đ&oacute; biến th&agrave;nh những b&ocirc;ng hoa đỏ rực rỡ rất đẹp.</p>\r\n\r\n<h3>Chiếc gậy kẹo</h3>\r\n\r\n<p><img alt=\"Chiếc gậy kẹo\" class=\"aligncenter size-full wp-image-93615\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/keo-gay-noel-e1573524763303.jpg\" style=\"height:427px; width:640px\" title=\"Chiếc gậy kẹo\" /></p>\r\n\r\n<p>V&agrave;o những năm 1800, một người l&agrave;m kẹo ở Ấn Độ muốn biểu đạt &yacute; nghĩa của Lễ Gi&aacute;ng Sinh qua một biểu tượng được l&agrave;m bằng kẹo. &Ocirc;ng bắt đầu thực hiện &yacute; tưởng của m&igrave;nh bằng c&aacute;ch uốn cong một trong những thỏi kẹo của m&igrave;nh th&agrave;nh h&igrave;nh một chiếc gậy kẹo. Qua c&acirc;y gậy kẹo của m&igrave;nh, &ocirc;ng đ&atilde; kết hợp những biểu tượng thể hiện t&igrave;nh y&ecirc;u v&agrave; sự hi sinh của Ch&uacute;a Gi&ecirc; su. M&agrave;u trắng biểu hiện cho sự trong trắng v&agrave; v&ocirc; tội của ch&uacute;a Gi&ecirc; su. Sau đ&oacute;, ba sọc nhỏ tượng trưng cho những đau đớn m&agrave; &ETH;ức Ch&uacute;a đ&atilde; phải chịu trước khi ng&agrave;i chết tr&ecirc;n c&acirc;y thập &aacute;c. Ba sọc đ&oacute; c&ograve;n biểu hiện ba ng&ocirc;i thi&ecirc;ng li&ecirc;ng của Ch&uacute;a (sự hợp nhất của Cha, Con v&agrave; Th&aacute;nh thần). &Ocirc;ng th&ecirc;m v&agrave;o một sọc đậm để tượng trưng cho m&aacute;u m&agrave; Ch&uacute;a đ&atilde; đổ cho lo&agrave;i người. Khi nh&igrave;n v&agrave;o c&aacute;i m&oacute;c của c&acirc;y gậy, ta thấy n&oacute; giống hệt c&acirc;y gậy của người chăn cừu v&igrave; ch&uacute;a Gi&ecirc; su ch&iacute;nh l&agrave; người chăn dắt con người. Nếu bạn lật ngược c&acirc;y gậy, n&oacute; sẽ trở th&agrave;nh chữ J tượng trưng cho chữ c&aacute;i đầu ti&ecirc;n của t&ecirc;n ch&uacute;a Gi&ecirc; su (Jesus). Nhờ c&oacute; người thợ l&agrave;m kẹo đ&oacute; m&agrave; mọi người đều biết được lễ Gi&aacute;ng Sinh n&oacute;i về điều g&igrave;.</p>\r\n\r\n<h3>Bữa ăn reveillon</h3>\r\n\r\n<p><img alt=\"Bữa ăn reveillon \" class=\"aligncenter size-full wp-image-93616\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/reveillon-.jpg\" style=\"height:340px; width:500px\" title=\"Bữa ăn reveillon \" /></p>\r\n\r\n<p>Tại Alsace, Ph&aacute;p, bữa ăn n&agrave;y phải gồm c&oacute; tam h&agrave;nh l&agrave; thủy (c&aacute; ch&eacute;p, con h&agrave;u), kh&ocirc;ng kh&iacute; (g&agrave; t&acirc;y hay ngỗng) v&agrave; mộc (thịt heo). Tập tục ăn g&agrave; t&acirc;y l&agrave; do thủy thủ của nh&agrave; th&aacute;m hiểm Christophe Colomb du nhập từ Mehico.</p>\r\n\r\n<h3>B&agrave;i h&aacute;t Gi&aacute;ng sinh</h3>\r\n\r\n<p>B&agrave;i Jingle bell do nhạc sĩ J.Pierpont s&aacute;ng t&aacute;c nhưng lại đặt v&agrave;o ch&ugrave;m b&agrave;i h&aacute;t trong danh s&aacute;ch những bản nhạc d&acirc;n ca nổi tiếng của Mỹ với t&ecirc;n gọi American song bag của nh&agrave; thơ Carl Sandburg. B&agrave;i n&agrave;y kh&ocirc;ng phải s&aacute;ng t&aacute;c cho đ&ecirc;m Noel như người ta lầm tưởng.</p>\r\n\r\n<p><img alt=\"Bài hát Giáng sinh Jingle Bells\" class=\"aligncenter size-full wp-image-93617\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/Jingle-bells-e1573524922193.jpg\" style=\"height:480px; width:640px\" title=\"Bài hát Giáng sinh Jingle Bells\" /></p>\r\n\r\n<p>Lời b&agrave;i h&aacute;t đậm t&iacute;nh d&acirc;n d&atilde; mộc mạc, diễn tả t&acirc;m hồn của người d&acirc;n Mỹ hướng đến một m&ugrave;a tuyết rơi thật tốt l&agrave;nh. H&igrave;nh ảnh &ocirc;ng Noel với t&uacute;i qu&agrave; đồ chơi, ngồi tr&ecirc;n xe tuần lộc với tiếng chu&ocirc;ng leng keng diễn tả sinh động, quyến rủ l&agrave;m cho người ta th&iacute;ch ngh&ecirc;u ngao, n&oacute; v&ocirc; t&igrave;nh trở th&agrave;nh b&agrave;i h&aacute;t Gi&aacute;ng sinh.B&agrave;i Silent Night, holy night c&oacute; xuất xứ từ Đức với tựa đề &ldquo;Stille Natch, Heiligo Natch&rdquo; do linh mục Joseph Mohr s&aacute;ng t&aacute;c khi cuộc chiến Đức &ndash; &Aacute;o &ndash; Phổ kết th&uacute;c. Sau n&agrave;y được phổ biến sang &Aacute;o, Mỹ&hellip; nay đ&atilde; được dịch ra gần 100 thứ tiếng.</p>\r\n\r\n<h3>B&aacute;nh Buche Noel</h3>\r\n\r\n<p><img alt=\"Bánh Buche Noel\" class=\"aligncenter size-full wp-image-93618\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/Buche.jpg\" style=\"height:366px; width:550px\" title=\"Bánh Buche Noel\" /></p>\r\n\r\n<p>Tổ ti&ecirc;n người phương T&acirc;y thường nh&oacute;m củi trong ống kh&oacute;i nh&agrave;, họ tin rằng lửa c&agrave;ng k&ecirc;u l&aacute;ch c&aacute;ch th&igrave; c&aacute;c thần dữ sẽ tr&aacute;nh xa. Ng&agrave;y nay, tập tục biến dần v&igrave; kh&ocirc;ng mấy nh&agrave; c&ograve;n ống kh&oacute;i. Thay v&agrave;o đ&oacute;, theo s&aacute;ng kiến của một thợ l&agrave;m b&aacute;nh ở Ph&aacute;p, năm 1875, người ta l&agrave;m chiếc b&aacute;nh ngọt c&oacute; h&igrave;nh c&acirc;y củi để mọi người thưởng thức trong đ&ecirc;m Noel v&agrave; lưu truyền cho đến nay.</p>\r\n\r\n<h3>Chu&ocirc;ng Th&aacute;nh Đường</h3>\r\n\r\n<p><img alt=\"Chuông Thánh Đường\" class=\"aligncenter size-full wp-image-93619\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/thap-chuong-nha-tho.jpg\" style=\"height:720px; width:540px\" title=\"Chuông Thánh Đường\" /></p>\r\n\r\n<p>Trong v&agrave;i nền văn h&oacute;a &Aacute; Ch&acirc;u, tiếng chu&ocirc;ng được d&ugrave;ng b&aacute;o hiệu cho quần ch&uacute;ng biết một biến cố hoan hỉ hay một sự kiện buồn n&atilde;o vừa xảy đến. Sau khi Ch&uacute;a h&agrave;i đồng gi&aacute;ng sinh, tục lệ n&agrave;y được truyền đến cho những quốc gia T&acirc;y phương để rung l&ecirc;n ch&agrave;o mừng Ch&uacute;a Cứu thế xuống trần. Tại đất nước T&acirc;y Ban Nha, c&aacute;c chu&ocirc;ng nh&agrave; thờ ng&acirc;n vang v&agrave;o l&uacute;c nửa đ&ecirc;m b&aacute;o hiệu Ch&uacute;a ra đời.</p>\r\n\r\n<h3>Nến Gi&aacute;ng Sinh</h3>\r\n\r\n<p>C&oacute; nhiều truyền thuyết kể về những c&acirc;y nến đ&ecirc;m Gi&aacute;ng Sinh. Nhiều người cho rằng Martin Luther l&agrave; người đầu ti&ecirc;n c&oacute; s&aacute;ng kiến thắp nhiều c&acirc;y nến tr&ecirc;n c&aacute;c c&agrave;nh c&acirc;y th&ocirc;ng m&ugrave;a Gi&aacute;ng Sinh. Khi trở về nh&agrave; v&agrave;o một đ&ecirc;m m&ugrave;a đ&ocirc;ng gần lễ Gi&aacute;ng Sinh, &ocirc;ng đ&atilde; sững sờ trước vẻ đẹp của &aacute;nh s&aacute;ng từ c&aacute;c ng&ocirc;i sao chiếu rọi tr&ecirc;n c&agrave;nh c&acirc;y th&ocirc;ng nhỏ trước cửa nh&agrave; m&igrave;nh. &Ocirc;ng t&aacute;i hiện lại cảnh tượng n&agrave;y bằng c&aacute;ch gắn c&aacute;c c&acirc;y nến l&ecirc;n c&agrave;nh của c&acirc;y th&ocirc;ng Noel trong nh&agrave; để tượng trưng cho Ng&ocirc;i Sao tr&ecirc;n l&agrave;ng B&ecirc;-lem.</p>\r\n\r\n<p><img alt=\"Nến Giáng Sinh\" class=\"aligncenter size-full wp-image-93620\" src=\"https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2019/11/nen-giang-sinh.jpg\" style=\"height:450px; width:600px\" title=\"Nến Giáng Sinh\" /></p>\r\n\r\n<p>C&oacute; một huyền thoại kh&aacute;c kể rằng một b&eacute; trai nọ bị đi lạc đ&ecirc;m Gi&aacute;ng Sinh nhang nhờ &aacute;nh đ&egrave;n nến nới cửa sổ ph&ograve;ng mẹ, đ&atilde; t&igrave;m được lối về đến nh&agrave;.</p>\r\n\r\n<p>Lại c&oacute; một truyền thuyết kh&aacute;c kể rằng th&aacute;nh Maria v&agrave; Giu-se đ&ecirc;m Ch&uacute;a Gi&aacute;ng Sinh đ&atilde; t&igrave;m ra nơi tr&uacute; ngụ nhờ lần theo &aacute;nh đ&egrave;n hắt ra từ cửa nhỏ một c&aacute;i chuồng b&ograve; lừa.</p>\r\n\r\n<h2>Gi&aacute;ng sinh ở Việt Nam</h2>\r\n\r\n<p>Ng&agrave;y nay, ở Việt Nam, d&ugrave; kh&ocirc;ng ch&iacute;nh thức nhưng Gi&aacute;ng sinh dần dần được coi như một ng&agrave;y lễ chung, thường được tổ chức v&agrave;o tối 24 v&agrave; k&eacute;o sang ng&agrave;y 25 th&aacute;ng 12. Trong những ng&agrave;y n&agrave;y, c&acirc;y th&ocirc;ng N&ocirc;-en được trang tr&iacute; ở nhiều nơi bằng c&acirc;y thật (thường l&agrave; th&ocirc;ng ba l&aacute; hoặc th&ocirc;ng m&atilde; vĩ) hay th&ocirc;ng nh&acirc;n tạo l&agrave;m bằng nhựa, kh&ocirc;ng phải c&acirc;y th&ocirc;ng như ở c&aacute;c nước phương t&acirc;y thường l&agrave; họ B&aacute;ch t&aacute;n. Tr&ecirc;n c&acirc;y, người ta thường treo c&aacute;c đồ trang tr&iacute; nhiều loại nhưng thường c&oacute; những cặp chu&ocirc;ng, d&acirc;y giả tuyết, những chiếc ủng, c&aacute;c g&oacute;i qu&agrave; tượng trưng v&agrave; đ&egrave;n trang tr&iacute; giống như c&aacute;c nước phương T&acirc;y&hellip;</p>\r\n', 'https://images.pexels.com/photos/5779173/pexels-photo-5779173.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', '<p>Lễ Gi&aacute;ng sinh, c&ograve;n được gọi l&agrave; lễ Thi&ecirc;n Ch&uacute;a gi&aacute;ng sinh, Noel, Christmas hay Xmas (từ tiếng Ph&aacute;p No&euml;l, l&agrave; viết tắt từ gốc Emmanuel, nghĩa l&agrave; &ldquo;Thi&ecirc;n Ch&uacute;a ở c&ugrave;ng ch&uacute;ng ta&rdquo;) l&agrave; một ng&agrave;y lễ kỷ niệm ng&agrave;y Ch&uacute;a Gi&ecirc;-su th&agrave;nh Nazareth sinh ra đời của phần lớn người Cơ Đốc Gi&aacute;o. Họ tin l&agrave; Gi&ecirc;-su được sinh tại Bethlehem thuộc tỉnh Judea của nước Do Th&aacute;i, l&uacute;c bấy giờ đang dưới quyền thống trị của Đế quốc La M&atilde; giữa năm 6 TCN v&agrave; năm 6.</p>\r\n', 'abcs', '2021-03-15 08:44:41', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Cấu trúc bảng cho bảng `order`
 --
 
 CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `address` text NOT NULL
+  `order_address` varchar(100) NOT NULL,
+  `order_phone` varchar(30) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `order`
+--
+
+INSERT INTO `order` (`order_id`, `user_id`, `order_address`, `order_phone`, `created_at`, `status`) VALUES
+(18, 3, '', '', '2021-03-02 08:15:18', 1),
+(19, 3, '', '', '2021-03-02 08:19:02', 1),
+(20, 3, '', '', '2021-03-02 08:19:08', 1),
+(21, 3, '', '', '2021-03-02 08:21:19', 1),
+(22, 3, '', '', '2021-03-02 08:23:54', 1),
+(23, 3, '', '', '2021-03-03 09:10:35', 1),
+(24, 3, '', '', '2021-03-06 03:22:08', 1),
+(25, 3, '', '', '2021-03-12 08:39:01', 1),
+(26, 3, '', '', '2021-03-18 04:40:53', 1),
+(27, 3, '115 Nguyen Khuyenadsaddsád', '0968916918', '2021-03-19 03:45:05', 1),
+(28, 3, '115 Nguyen Khuyenadsad', '0968916918', '2021-03-19 03:47:29', 1),
+(29, 4, 'asdasd', '658965', '2021-03-29 05:10:57', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_detail`
+-- Cấu trúc bảng cho bảng `order_detail`
 --
 
 CREATE TABLE `order_detail` (
+  `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `book_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_id`, `book_id`, `quantity`, `price`) VALUES
+(7, 18, 2, 2, '17.88'),
+(8, 18, 3, 1, '18.00'),
+(9, 19, 2, 2, '17.88'),
+(10, 19, 3, 1, '18.00'),
+(11, 21, 2, 2, '17.88'),
+(12, 22, 2, 1, '17.88'),
+(13, 22, 3, 1, '18.00'),
+(14, 23, 2, 1, '17.88'),
+(15, 24, 2, 1, '17.88'),
+(17, 25, 2, 1, '17.88'),
+(18, 25, 3, 1, '18.00'),
+(19, 26, 2, 1, '17.88'),
+(20, 26, 3, 1, '18.00'),
+(21, 26, 2, 1, '17.88'),
+(22, 27, 2, 1, '17.88'),
+(23, 27, 3, 1, '18.00'),
+(24, 28, 2, 1, '17.88'),
+(25, 29, 2, 1, '17.88'),
+(26, 29, 3, 2, '18.00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quantity`
+-- Cấu trúc bảng cho bảng `quantity`
 --
 
 CREATE TABLE `quantity` (
@@ -115,7 +231,7 @@ CREATE TABLE `quantity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `quantity`
+-- Đang đổ dữ liệu cho bảng `quantity`
 --
 
 INSERT INTO `quantity` (`book_id`, `quantity`) VALUES
@@ -126,28 +242,30 @@ INSERT INTO `quantity` (`book_id`, `quantity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `religion`
+-- Cấu trúc bảng cho bảng `religion`
 --
 
 CREATE TABLE `religion` (
   `id` int(11) NOT NULL,
-  `religion_name` varchar(50) NOT NULL
+  `religion_name` varchar(50) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `religion`
+-- Đang đổ dữ liệu cho bảng `religion`
 --
 
-INSERT INTO `religion` (`id`, `religion_name`) VALUES
-(1, 'Phật Giáo'),
-(2, 'Hindu Giáo'),
-(3, 'Kitô Giáo'),
-(4, 'Do Thái Giáo');
+INSERT INTO `religion` (`id`, `religion_name`, `status`) VALUES
+(1, 'Buddhism', 1),
+(2, 'Hinduism', 1),
+(3, 'Christian', 1),
+(4, 'Jewish', 1),
+(10, 'Christian ', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
@@ -162,123 +280,177 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `username`, `password`, `address`, `email`, `phone`, `status`) VALUES
-(1, 'tuan', 'abcd', 'e10adc3949ba59abbe56e057f20f883e', '', '', '', 1),
-(3, 'TUAN DANG MIN', 'tuandang_198', '202cb962ac59075b964b07152d234b70', '115 Nguyen Khuyen', 'tuan@gmail.com', '0968916918', 1),
+(1, 'tuan', 'abcd', '13c95dd8df91a8454c9f3ba44587d5c6', '', '', '', 1),
+(3, 'TUAN DANG MIN', 'tuandang_198', '202cb962ac59075b964b07152d234b70', '115 Nguyen Khuyenadsad', 'tuan@gmail.com', '0968916918', 1),
 (4, 'abcd', 'tuandang', 'e10adc3949ba59abbe56e057f20f883e', 'asdasd', '##@gmail.com', '658965', 1),
-(6, '', 'tuandang_1989', '202cb962ac59075b964b07152d234b70', '', '', '', 1);
+(6, '', 'tuandang_1989', '13c95dd8df91a8454c9f3ba44587d5c6', '', '', '', 1),
+(7, 'Phật Giá', 'doge', 'd81f9c1be2e08964bf9f24b15f0e4900', '115 Nguyen Khuyen', 'dnq17@ewq', '0968916918', 1),
+(8, '', 'tuandang_1982', '13c95dd8df91a8454c9f3ba44587d5c6', '', '', '', 1),
+(9, '', 'tuandang_1986', '13c95dd8df91a8454c9f3ba44587d5c6', '', '', '', 1),
+(10, 'TUAN DANG MINH', 'tuandang_1998', 'e1f063eea2b98073e35b5df6041a731b', '16 ngõ Mai Hương,Bạch Mai', 'tuandang10998@gmail.com', '0962961881', 1);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `books`
+-- Chỉ mục cho bảng `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `books`
 --
 ALTER TABLE `books`
-  ADD PRIMARY KEY (`book_id`);
+  ADD PRIMARY KEY (`book_id`),
+  ADD KEY `fk_book_religion` (`religion`);
 
 --
--- Indexes for table `festival`
+-- Chỉ mục cho bảng `company_form`
+--
+ALTER TABLE `company_form`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `festival`
 --
 ALTER TABLE `festival`
   ADD PRIMARY KEY (`fes_id`),
   ADD KEY `fk_religion` (`religion_id`);
 
 --
--- Indexes for table `order`
+-- Chỉ mục cho bảng `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `fk_oder_user_id` (`user_id`);
 
 --
--- Indexes for table `order_detail`
+-- Chỉ mục cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_order_id` (`order_id`),
   ADD KEY `fk_book_id` (`book_id`);
 
 --
--- Indexes for table `quantity`
+-- Chỉ mục cho bảng `quantity`
 --
 ALTER TABLE `quantity`
   ADD KEY `fk_quantity_book_id` (`book_id`);
 
 --
--- Indexes for table `religion`
+-- Chỉ mục cho bảng `religion`
 --
 ALTER TABLE `religion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `books`
+-- AUTO_INCREMENT cho bảng `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `festival`
+-- AUTO_INCREMENT cho bảng `company_form`
 --
-ALTER TABLE `festival`
-  MODIFY `fes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `company_form`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT cho bảng `feedback`
 --
-ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `religion`
---
-ALTER TABLE `religion`
+ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `festival`
+--
+ALTER TABLE `festival`
+  MODIFY `fes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT cho bảng `order`
+--
+ALTER TABLE `order`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT cho bảng `order_detail`
+--
+ALTER TABLE `order_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT cho bảng `religion`
+--
+ALTER TABLE `religion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `festival`
+-- Các ràng buộc cho bảng `books`
+--
+ALTER TABLE `books`
+  ADD CONSTRAINT `fk_book_religion` FOREIGN KEY (`religion`) REFERENCES `religion` (`id`);
+
+--
+-- Các ràng buộc cho bảng `festival`
 --
 ALTER TABLE `festival`
   ADD CONSTRAINT `fk_religion` FOREIGN KEY (`religion_id`) REFERENCES `religion` (`id`);
 
 --
--- Constraints for table `order`
+-- Các ràng buộc cho bảng `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `fk_oder_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `order_detail`
+-- Các ràng buộc cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `fk_book_id` FOREIGN KEY (`book_id`) REFERENCES `books` (`book_id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_order_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `quantity`
+-- Các ràng buộc cho bảng `quantity`
 --
 ALTER TABLE `quantity`
   ADD CONSTRAINT `fk_quantity_book_id` FOREIGN KEY (`book_id`) REFERENCES `books` (`book_id`) ON UPDATE CASCADE;
