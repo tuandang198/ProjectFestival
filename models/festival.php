@@ -4,7 +4,9 @@ function showFestival(){
     $query = "select * from festival where status=1";
     if(isset($_GET['religionID'])){
         $query.=" and religion_id=".$_GET['religionID'];
-    }
+    }elseif(isset($_POST['search'])){
+        $query.=" and title='%" . $_POST['search_name'] . "%'";
+      } 
     $result=$connect->query($query);
     return $result;
 }
@@ -115,6 +117,14 @@ function showReligionByID(){
     global $connect;
     $id=$_GET['id'];
     $query="select * from religion where id='$id'";
+    $result=$connect->query($query);
+    $result=mysqli_fetch_array($result);
+    return $result;
+
+}
+function showReligionBookID($relid){
+    global $connect;
+    $query="select * from religion where id='$relid'";
     $result=$connect->query($query);
     $result=mysqli_fetch_array($result);
     return $result;

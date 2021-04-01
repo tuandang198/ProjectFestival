@@ -22,19 +22,19 @@ while($row = mysqli_fetch_array($result)) {
   ?>
 
         <figure>
-          <header class="heading">Festival Gallery </header>
+          <header class="heading" style="text-align: center;">Festival Gallery </header>
           <ul class="nospace clear">
           <?php foreach($result as $item):?>
-            <div><a class="imgover" href="?festival=festivalDetail&id=<?=$item['fes_id']?>"><img src="<?=$item['title_image']?>" alt=""></a></div>
+            <div><a class="imgover" href="?option=festivalDetail&id=<?=$item['fes_id']?>"><img src="<?=$item['title_image']?>" alt=""></a></div>
         
           </ul>
-          <figcaption><p><?= $item['title'] ?></p></figcaption>
+          <figcaption style="text-align: center;"><p><?= $item['title'] ?></p></figcaption>
           <?php endforeach;?>
         </figure>
       
 <?php }?>
 <nav class="pagination">
-        <ul>
+        <ul style="margin: 62px 0 0 0;">
 <?php
 for ($page=1;$page<=$number_of_pages;$page++) {
   echo '<li><a href="?option=galleryfestival&page=' . $page . '">' . $page . '</a> </li> ';

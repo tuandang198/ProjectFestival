@@ -25,7 +25,7 @@
         </section>
         <section>
                <label for="">Description</label>
-               <textarea name="description" id="description"><?=$festival['description']?></textarea>     
+               <textarea name="description" id="description" ><?=$festival['description']?></textarea>     
                <script>CKEDITOR.replace("description");</script>
         </section>
         <section>

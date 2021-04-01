@@ -22,7 +22,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <!-- Top Background Image Wrapper -->
 <div class="bgded overlay" style="background-image:url('../images/demo/backgrounds/01.png');"> 
   <!-- ################################################################################################ -->
-  <div class="wrapper row0">
+  <div class="wrapper row0" b>
     <header id="header" class="hoc clear center"> 
       <!-- ################################################################################################ -->
       <h1 id="logo"><i class="fas fa-truck-loading"></i> <a href="../index.php">Shiphile</a></h1>

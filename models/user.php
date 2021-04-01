@@ -59,3 +59,21 @@ function resetPass($newPass){
     $result=$connect->query($query);
     return $result;
 }
+function random_password() 
+{
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    $password = array(); 
+    $alpha_length = strlen($alphabet) - 1; 
+    for ($i = 0; $i < 8; $i++) 
+    {
+        $n = rand(0, $alpha_length);
+        $password[] = $alphabet[$n];
+    }
+    return implode($password); 
+}
+function resetRandPass($newRandPass){
+    global $connect;
+    $query="update user set password='$newRandPass' where email='".$_SESSION['forgotAccount']."'";
+    $result=$connect->query($query);
+    return $result;
+}

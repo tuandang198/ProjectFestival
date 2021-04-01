@@ -1,4 +1,5 @@
 <?php if(isset($_POST['submit'])){
+    
     insertFeedback();
     echo "<script>alert('Your feedback has been sent!')</script>";
 }

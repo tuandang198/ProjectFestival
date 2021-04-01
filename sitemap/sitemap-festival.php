@@ -29,7 +29,7 @@ include "../models/festival.php";
     <tbody>
         <?php foreach($festival as $item):?>
             <tr>
-            <td><a href="../?festival=festivalDetail&id=<?=$item['fes_id']?>"><?=$item['title']?></a></td>
+            <td><a href="../?option=festivalDetail&id=<?=$item['fes_id']?>"><?=$item['title']?></a></td>
 			<td><?=$item['created_at']?></td>
             </tr>
         <?php endforeach;?>

@@ -19,6 +19,9 @@
                 <br>
                 <section><a href="?request=companyInfo">>> Company Information</a></section>
                 <br>
+                <section><a href="?request=feedback">>> Feedback Management</a></section>
+                <br>
+                <br>
             </td>
             <td><?php include "../controllers/admin_controller.php" ?></td>
         </tr>

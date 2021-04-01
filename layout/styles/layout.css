@@ -286,7 +286,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#9099AA !important;}
 .overlay.light{color:#474747;}
 .overlay.light::after{background-color:rgba(255,255,255,.7);}
 
-.btn, .btn.inverse:hover{color:black, background-color:#9099AA; border-color:#9099AA;}
+.btn, .btn.inverse:hover{color:b; background-color:#9099AA; border-color:#9099AA;}
 .btn:hover, .btn.inverse{color:inherit; background-color:transparent; border-color:inherit;}
 
 .imgover:hover::before{background:rgba(0,0,0,.55);}
@@ -441,7 +441,4 @@ table a, #comments a{background-color:inherit;}
 
 	.font-x2{font-size:1.6rem;}
 	.font-x3{font-size:1.8rem;}
-}
-.abc{
-background-color: black;
 }

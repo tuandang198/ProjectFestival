@@ -1,5 +1,18 @@
 <?php
 $forgotAccount = $_SESSION['forgotAccount'];
+
+if(isset($_POST['receivePass'])){
+    $newRandPass=random_password();
+    $newRandPassMd5=md5($newRandPass);
+    resetRandPass($newRandPassMd5);
+    $to = $forgotAccount;
+    $subject = "Password";
+    $txt = "Your password is : $newRandPass.";
+    $headers = "From: festival.com" . "\r\n" .
+                "CC: somebodyelse@example.com";
+                mail($to,$subject,$txt,$headers);
+                echo "<script>location='?option=signin'</script>";
+            }
 ?>
 
 <div class="wrapper bgded" style="background-image:url('../images/demo/backgrounds/03.png');">
